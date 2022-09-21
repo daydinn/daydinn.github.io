@@ -1,0 +1,67 @@
+#mywork_section{
+    padding: 70px 0;
+    
+    background-color: var(--light-secondary-color);
+
+}
+#mywork_section h2{
+    
+    font-size: 50px;
+    text-align: center;
+
+}
+
+
+.flex_container{
+    margin-top:50px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box{
+    margin: 50px;
+    gap: 40px;
+    width: 500px;
+    height: 600px;
+    max-width: calc(90% - 40px);
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 60px 20px;
+    text-align: center;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.box img{
+ border-radius: 20px;   
+}
+.box *{  /* funktioniert nicht */
+    text-align: center;
+}
+.box a{
+    background-color: var(--main-brand-color);
+    width: min-content;
+    padding: 15px 40px;
+    border-radius: 50px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 4px solid var(--main-brand-color);
+    transition: 150ms ease-in-out;
+}
+.box a:hover{
+    background: transparent;
+}
+
+@media(max-width: 500px){
+    #services-section h2{
+        font-size: 12vw;
+    }
+}
