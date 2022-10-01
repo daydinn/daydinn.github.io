@@ -18,13 +18,12 @@ border-radius: 50%;
 
 }
 */
+
 .circle{
     height: 600px;
     width: 600px;
-   
     max-height: 80vw;
     max-width: 80vw;
-
     overflow: hidden;
     border-radius: 50%;
     border: 20px solid var(--main-brand-color);
