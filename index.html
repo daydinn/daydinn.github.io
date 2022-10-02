@@ -7,7 +7,7 @@
     <title>Portfolio</title>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link type="text/css" rel="stylesheet" href="css/lightgallery-bundle.css" />
     <link rel="stylesheet" href="general_settings.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="about_me.css">
@@ -51,7 +51,8 @@
     </p>
   -->
    </div>
-  </section>
+
+ </section>
   <section id="services_section">
     <h1 style="text-align:center;">My Skills</h1>
     
@@ -160,7 +161,7 @@
       
     
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="animated-thumbnails">
     <br>
     <p style="text-align: center;">Some of projects i did during my studies</p> 
         
@@ -168,8 +169,10 @@
 
           <div class="col-md-4">
             <div class="box">
-                <img src="images/Onepage Storytelling-Website-2022.png" alt=""> 
-        
+         Lightbox     <!-- https://www.w3schools.com/howto/howto_js_lightbox.asp -->
+                <!-- <a data-fslightbox="gallery" href="https://daydinn.github.io/images/Onepage Storytelling-Website-2022.png"> -->
+                  <img src="images/Onepage Storytelling-Website-2022.png" alt=""> 
+                  <!-- </a> -->
                 <p>Prototype of One Page Storytelling<br>made with Adobe XD</p> 
                    
          
@@ -177,8 +180,9 @@
           </div>
           <div class="col-md-4">
             <div class="box">
+              <!-- <a data-fslightbox="gallery" href="https://daydinn.github.io/images/Onepage Storytelling-Website-2022.png"> -->
                 <img src="images/merge_onepage.jpg" alt=""> 
-        
+                 <!-- </a> -->
                 <p>Implementation of One Page Storytelling Website with GSAP Animations und Sound effects<br>HTML,CSS,JS</p> 
                    
          
@@ -285,11 +289,27 @@
         
                 <p>Online shop application for customers and employees -3</p> 
                    
-         
               </div>
           </div>
+          
       </div>
-    </div>
+
+      <div style="">
+      <a href="assets/portfolio.pdf" style="padding:  5%;">Here is my Portfolio</a>
+      </div>
+
+
+<!-- Create links -->
+
+  <!-- Add the library - only one file -->
+  <script>
+  lightGallery(document.getElementById('animated-thumbnails-gallery'), {
+    thumbnail: true,
+});
+</script>
+
+
+
   </section>
 
 
