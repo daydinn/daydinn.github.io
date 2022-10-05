@@ -92,15 +92,6 @@
     0% { width: 0; }
 }
 
-
-
-
-
-
-
-
-
-
 @media(max-width: 500px){
     #services-section h2{
         font-size: 12vw;
