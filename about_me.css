@@ -33,3 +33,10 @@
     font-size: 12vw;
  }
 }
+
+#aboutme-img{
+  margin-left: 1%;
+  margin-right: 2%;
+  margin-bottom:1%;
+  display:flex;
+}

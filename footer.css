@@ -15,9 +15,6 @@ footer h2{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
     gap: 15px;
-    grid-template-areas:
-    "item1 item1 item2 item3"
-    "item4 item5 item5 item3";
 }
 .grid_item{
     background-color: var(--light-secondary-color);
@@ -62,11 +59,6 @@ footer h2{
     .grid_container{
         grid-template-columns: 1fr 1fr 1fr ;
         grid-template-rows: 300px 300px 300px;
-        
-        grid-template-areas:
-        "item1 item1 item2 "
-        "item4 item5 item5 " 
-        "item3 item3 item3 ";
     }
 }
 /*Handy*/
@@ -74,12 +66,6 @@ footer h2{
     .grid_container{
         grid-template-columns: 1fr 1fr  ;
         grid-template-rows: auto auto auto auto;
-        
-        grid-template-areas:
-        "item1 item1"
-        "item5 item5" 
-        "item2 item4"
-        "item3 item3";
     }
 }
 @media(max-width: 650px){ 
