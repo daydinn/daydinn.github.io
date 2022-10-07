@@ -247,3 +247,85 @@
     background-repeat: no-repeat;
     background-size: contain;
   }
+
+  /*Lightbox try2 */
+
+.filters {
+  margin-top: 50px;
+
+
+}
+
+.filters ul{
+  padding: 0;
+}
+
+filters ul li {
+  list-style: none;
+  display: block;
+  padding: 15px 0;
+  cursor: pointer;
+  position: relative;
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+}
+
+.filters ul li.active,
+.filters ul li:hover{
+
+  color: var(--main-brand-color);
+}
+
+.filters-content{
+  margin-top: 50px;
+}
+
+.filters-content .show{
+  opacity: 1;
+  visibility: visible;
+  transition: all 350ms;
+}
+
+.filters-content .hide{
+  opacity: 1;
+  visibility: hidden;
+  transition: all 350ms;
+}
+
+.filters-content .all{
+  margin-bottom: 30px;
+
+}
+
+.filters-content .item{
+  text-align:center;
+  cursor:pointer;
+  transition: all 0.3 ease-in-out
+
+}
+
+.filters-content .item:hover{
+
+  opacity: 0.75;
+}
+
+.filters-content .item img{
+
+  width: 100%;
+  border: 4px solid white;
+}
+
+#projects{
+  padding-top: 120px;
+}
+
+#projects .section-heading{
+  margin-bottom: 60px;
+}
+
+#projects .section-heading h6{
+  color: var(--main-brand-color);
+}
