@@ -9,11 +9,11 @@
 
 }
 .about_me_container {
-  width: 750px;
+  /* width: 750px; */
   max-width: 90%;
 }
 #about_me_section img{
-  width: 400px;
+  width: 300px;
   max-width: calc(90%-30px);
   border: 15px solid var(--text-color);
 }
@@ -21,7 +21,7 @@
   font-size: 80px;
 }
 .about_me_container p{
-  text-align: justify;
+  text-align: center;
   line-height: 175%;
 }
 @media(max-width: 800px){
@@ -35,8 +35,9 @@
 }
 
 #aboutme-img{
-  margin-left: 1%;
+  margin-left: 3%;
   margin-right: 2%;
   margin-bottom:1%;
-  display:flex;
+  /*display:flex;*/
+  text-align: center;
 }
