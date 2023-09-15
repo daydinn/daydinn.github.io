@@ -1,0 +1,92 @@
+<!----
+<div class="container">
+    <h1>To-Do List</h1>
+    <input [(ngModel)]="newTodo" (keyup.enter)="addTodo()" placeholder="Add a new task" />
+    <ul>
+      <li *ngFor="let todo of todos">
+        <input type="checkbox" [(ngModel)]="todo.completed" />
+        {{ todo.text }}
+        <button (click)="deleteTodo(todo)">Delete</button>
+      </li>
+    </ul>
+  </div>
+--->
+<h1 style="text-align:center;">Todo List</h1>
+<br>
+
+
+<div class="container-sm">
+    <div class="row">
+        <div  class="col-12 ">
+    <div class="form-buttons ml-auto">
+      
+        <!-- Add-Icon -->
+       <img class="formicon" (click)="showAddTodoForm = !showAddTodoForm" src="assets/add.png" alt="Add Icon"  />
+    
+        <!-- Close-Icon -->
+      <img class="formicon" (click)="hideAddForm()" src="assets/close.png" alt="Cancel Icon"/>
+      </div>
+    </div>
+    </div>
+<div class="scroll-container text-center">
+    
+  <div class="row mt-2 justify-content-center">
+    <div row mt-1>
+        
+    </div>
+    <div  class="col-4 ">
+        
+    
+    <form *ngIf="showAddTodoForm" #todoForm="ngForm" (ngSubmit)="saveTodo()">
+    <div class="form-group">
+      <label for="label">Name:</label>
+      <input type="text" id="label" name="label" class="form-control" [(ngModel)]="newTodo.label" required>
+    </div>
+    <div class="form-group">
+      <label for="color">Category:</label>
+      <select id="color" name="color" class="form-control" [(ngModel)]="newTodo.color" required>
+        <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="points">Points:</label>
+      <input type="number" id="points" name="points" class="form-control" [(ngModel)]="newTodo.points" required>
+    </div>
+
+    
+<!--ng if scheint hier nicht zu funktionieren-->
+<!--<img class="addnewtodo my-2" *ngIf="showAddTodoForm" src="assets/plus.png" alt="Add New Todo"  />-->
+<button type="submit" class="btn btn-primary" *ngIf="showAddTodoForm">Add Todos</button>
+
+
+  </form>
+  
+  
+</div>
+  <table class="table table-striped ">
+            
+    <tbody>
+      <tr *ngFor="let todo of todos; let i = index;">
+        <th [style.color]="todo.color" scope="row">{{i+1}}</th>
+        <td [style.color]="todo.color" class="{{(todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.label}}</td>
+       
+        <td [style.color]="todo.color">{{todo.points}}</td>
+        <td style=" color: red; font-weight: bold; " (click)="remove(i)">X</td>
+      </tr>
+     </tbody>
+     
+    </table>
+    
+   
+
+  </div>
+  
+</div>
+
+  <br>
+  <br>
+</div>
+
+<br>
+<br>
+<br>

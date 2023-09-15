@@ -1,82 +1,16 @@
 <div class="container-sm text-center">
-    <div class="row mt-3">
-    <p>How are you feeling right now ?</p>
-      <div class="col-4">
-
-        <img src="assets/happyface2.svg" alt="sadface-icon" />
-
-</div>
-
-<div class="col-4">
-
-    <img src="assets/happyface2.svg" alt="neutralface-icon" />
-
-</div>
-
-<div class="col-4">
-
-    <img src="assets/happyface2.svg" alt="happyface-icon" />
-
-</div>
-</div>
-    <div class="row mt-3">
-
-
-        <div class="col-4">
-
-            <img src="assets/happyface2.svg" alt="tired-icon" />
-    
-    </div>
-    
-    <div class="col-4">
-    
-        <img src="assets/happyface2.svg" alt="standing-icon" />
-    
-    </div>
-    
-    <div class="col-4">
-    
-        <img src="assets/happyface2.svg" alt="energic-icon" />
-    
-    </div>
-
-
-
-
-    </div>
-
-
-    <div class="row mt-3">
-
-
-        <div class="col-4">
-
-            <img src="assets/happyface2.svg" alt="no-battery-icon" />
-    
-    </div>
-    
-    <div class="col-4">
-    
-        <img src="assets/happyface2.svg" alt="mid-battery-icon" />
-    
-    </div>
-    
-    <div class="col-4">
-    
-        <img src="assets/happyface2.svg" alt="full-battery-icon" />
-    
-    </div>
-
-
-
-
-    </div>
-
-
-
-    
-
-    </div>
+        <div class="row mt-3">
+            <div class="col-4" *ngFor="let mood of moods">
+                <div class="mood" (click)="toggleMoodSelection(mood)" >
+                  <img [src]="mood.img" class="img-fluid mb-2 mood-image mt-2" [class.selected-mood]="mood.isSelected">
+                </div>
+              </div>
+              
+              
+              
+          </div>
+        </div>
+            
 
     <app-scores></app-scores>
 

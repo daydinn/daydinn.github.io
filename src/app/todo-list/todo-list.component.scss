@@ -1,0 +1,48 @@
+.done{
+
+    text-decoration: line-through;
+}
+
+.scroll-container,
+.big-window {
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+}
+
+
+/* CSS in Ihrer .css-Datei */
+select {
+    padding: 5px;
+  }
+  
+
+.formicon, .addnewtodo{
+  
+    cursor: pointer; /* Ändert den Cursor auf einen Zeiger, wenn über das Icon gehovert wird */
+    transition: transform 0.2s ease-in-out; /* Fügt einen Hover-Effekt hinzu (optional) */
+  }
+ 
+
+/* Hover-Effekt: Vergrößern das Icon leicht beim Hover */
+.formicon:hover{
+    transform: scale(1.1);
+  }
+.addnewtodo:hover{
+    transform: scale(1.1);  
+}
+
+
+
+  /* CSS für die Button-Icons */
+.form-buttons {
+    float: right;
+    
+    display: flex; /* Verwendet Flexbox für das Layout */
+    gap: 4px; /* Fügt einen Abstand von 10px zwischen den Icons hinzu */
+  }
