@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Activity} from '../activityInterface';
+import { style } from '@angular/animations';
 @Component({
   selector: 'app-activitys',
   templateUrl: './activitys.component.html',
@@ -30,11 +31,12 @@ export class ActivitysComponent {
   selectedActivity: any;
 
   getBorderStyle(color: string): string {
-    return `3px solid ${color}`; // You can adjust the border style as needed
+    return `2px solid ${color}`; // You can adjust the border style as needed
   }
 
   toggleHover(activity: any) {
     activity.isHovered = !activity.isHovered;
+    
   }
 
   showActivityInfo(activity: any) {
@@ -53,4 +55,16 @@ export class ActivitysComponent {
     this.showInfoPage = !this.showInfoPage;
   }
 
+
+  isKlicked = false; // Die Klasse wird zunächst nicht hinzugefügt
+
+  toggleClass() {
+    this.isKlicked = !this.isKlicked; // Umkehren des Status der Klasse
+  }
 }
+
+
+
+
+
+

@@ -8,19 +8,23 @@ import { HomeComponent } from './home/home.component';
 import { MoodsComponent } from './moods/moods.component';
 import { ActivitysComponent } from './activitys/activitys.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { ScoresComponent } from './scores/scores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MoodsComponent,
-    ActivitysComponent
+    ActivitysComponent,
+    ScoresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+/* CSS-Stil in Ihrer CSS- oder SCSS-Datei */
+.icon-text-container {
+    display: flex; /* Verwenden Sie Flexbox für die horizontale Ausrichtung */
+    align-items: center; /* Vertikal zentrieren, falls erforderlich */
+  }
+  
+  
+  /* Stil für den Text */
+  .icon-text-container span {
+    font-size: 18px; /* Ändern Sie die Größe des Texts nach Bedarf */
+    color: #333; /* Ändern Sie die Farbe des Texts nach Bedarf */
+  }
+  
+
+  .center-score {
+  display: inline-block;
+  float: none;
+  }

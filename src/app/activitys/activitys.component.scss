@@ -1,6 +1,7 @@
-.scroll-container {
+/* Gemeinsame Regeln für .scroll-container und .big-window */
+.scroll-container,
+.big-window {
   max-height: 250px;
-  
   overflow-y: scroll;
   overflow-x: scroll;
   border-radius: 10px;
@@ -10,64 +11,59 @@
   border: 1px solid #ccc;
 }
 
-.icon-container {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  justify-content: center;
-  align-items: center;
+.activity-image:hover{
+  transform: scale(1.1);
+  }
+
+.activity-image:active{
+animation: vibrate 0.2s ease 0.3; /* Adjust the animation duration and timing */
 }
 
-.activity-card{
-img:not(.noboder), svg:not(.icon) {
+/* Gemeinsame Regeln für .icon-container, .activity-card img:not(.noborder), .activity-card svg:not(.icon), .big-window img:not(.noborder), .big-window svg:not(.icon) */
+.icon-container,
+.activity-card img:not(.noborder),
+.activity-card img:not(.activity),
+.activity-card img:not(.isHovered),
+
+.activity-card svg:not(.icon),
+
+.big-window img:not(.noborder),
+.big-window svg:not(.icon) 
+
+{
   border-radius: 50%;
   border: 3px solid #ccc;
   padding: 5px;
-  
-  
-}
 }
 
-.big-window{
-img:not(.noborder), svg :not(.icon) {
-  border-radius: 50%;
-  border: 3px solid #ccc;
-  padding: 5px;
+
+.hovered {
+  border-color: #8b7510 !important; /* Ändern Sie die Border-Farbe auf Gold */
+  border-width: 5px !important;
 }
-}
-/* CSS for big-window */
+
+
+
+/* CSS für .big-window */
 .big-window {
-
-
-  /* Add padding and margin for spacing */
   padding: 20px;
-  margin: 0 auto; /* Center the card horizontally */
-
-  /* Allow text to break onto the next line */
+  margin: 0 auto;
   overflow-wrap: break-word;
-  word-wrap: break-word; /* For compatibility with some browsers */
-
-  /* Control whitespace */
-  white-space: normal; /* Allow whitespace to wrap */
-
-  /* Add a border, shadow, and background color as needed */
+  word-wrap: break-word;
+  white-space: normal;
   border: 1px solid #ccc;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
 
-/* CSS for image inside the card */
+/* CSS für Bilder innerhalb der Karte */
 .big-window img {
-  max-width: 100%; /* Ensure the image fits within the card */
-  height: auto; /* Maintain the image's aspect ratio */
+  max-width: 100%;
+  height: auto;
 }
 
-
+/* CSS für den Schließen-Button */
 .close-button {
-  position: absolute;
-  top: 10px; /* Anpassen, um die gewünschte vertikale Position zu erreichen */
-  right: 10px; /* Anpassen, um die gewünschte horizontale Position zu erreichen */
   padding: 10px 15px;
   background-color: #ccc;
   border: none;
@@ -75,3 +71,71 @@ img:not(.noborder), svg :not(.icon) {
   cursor: pointer;
 }
 
+.close-bigwindow-icon{
+  cursor: pointer;
+  text-align: end;
+  margin-top: -11px;
+  margin-right: -7px;
+  
+}
+
+.close-bigwindow-icon:active {
+  transform: scale(1.1);
+}
+
+
+/* SCSS in Ihrer activitys.component.scss-Datei oder Ihrem Stylesheet */
+.hidden-checkbox {
+  position: absolute;
+  left: -9999px; /* Checkbox außerhalb des sichtbaren Bereichs verschieben */
+}
+
+.checkbox-label {
+  cursor: pointer;
+  text-align:end;
+
+  .checkbox-custom {
+    /* Stil für das benutzerdefinierte Icon */
+    width: 24px; /* Beispiel für eine CSS-Deklaration */
+    height: 24px; /* Beispiel für eine CSS-Deklaration */
+  }
+
+  /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
+  #infoCheckbox:checked + & .checkbox-custom {
+    /* Stil für das aktivierte Icon */
+    color: blue; /* Beispiel für eine CSS-Deklaration */
+  }
+}
+
+.infoCheckboxIcon{
+  filter: opacity(0.5) drop-shadow(0 0 0 green);
+}
+.infoCheckbox-clicked {
+  filter: opacity(1.0) drop-shadow(0 0 0 green);
+}
+
+.neue-klasse:hover{
+  filter: hue-rotate(180deg);
+  transform-origin: center;
+  transform: scale(1.1);
+}
+
+
+@keyframes vibrate {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-2px, -2px); }
+  20% { transform: translate(2px, -2px); }
+  30% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, 2px); }
+  50% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, -2px); }
+  70% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, 2px); }
+  90% { transform: translate(-2px, -2px); }
+}
+
+
+
+
+
+ 
