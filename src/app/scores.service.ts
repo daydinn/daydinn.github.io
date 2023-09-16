@@ -34,6 +34,15 @@ constructor() {
     localStorage.setItem(`score-${color}`, updatedScore.toString());
   }
 
+   // Remove points from the score for a specific color.
+  removeScore(color: string, points: number): void {
+  let updatedScore = (this.scores[color].value || 0) - points; // Hier haben wir const durch let ersetzt
+  // Ensure the score doesn't go negative (optional)
+  if (updatedScore < 0) updatedScore = 0;
+  
+  this.scores[color].next(updatedScore);
+  localStorage.setItem(`score-${color}`, updatedScore.toString());
+}
   
 
   // Return the observable of the score for a specific color

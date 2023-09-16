@@ -5,5 +5,5 @@ img:   string;
 hoveredImg: string;
 color: string;
 points: number;
-isHovered: false;
+isHovered: boolean;
 }
