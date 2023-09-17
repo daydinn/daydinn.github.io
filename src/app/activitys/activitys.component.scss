@@ -1,7 +1,7 @@
 /* Gemeinsame Regeln für .scroll-container und .big-window */
 .scroll-container,
 .big-window {
-  max-height: 250px;
+  max-height: 270px;
   overflow-y: scroll;
   overflow-x: scroll;
   border-radius: 10px;
@@ -39,7 +39,7 @@ animation: vibrate 0.2s ease 0.3; /* Adjust the animation duration and timing */
 
 .hovered {
   border-color: gold !important; /* Ändern Sie die Border-Farbe auf Gold */
-  border-width: 3px !important;
+  border-width: 4px !important;
 }
 
 
