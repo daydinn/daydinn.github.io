@@ -1,6 +1,5 @@
 /* Gemeinsame Regeln für .scroll-container und .big-window */
-.scroll-container,
-.big-window {
+.scroll-container{
   max-height: 270px;
   overflow-y: scroll;
   overflow-x: scroll;
@@ -32,8 +31,8 @@ animation: vibrate 0.2s ease 0.3; /* Adjust the animation duration and timing */
 
 {
   border-radius: 50%;
-  border: 3px solid #ccc;
-  padding: 5px;
+  border: 4px solid #ccc ;
+  padding: 5px ;
 }
 
 

@@ -1,0 +1,54 @@
+<div class="container-sm ">
+    <div class="row">
+        <div class="col-12">
+
+            <!-- Bootstrap Card für den aktuellen total Level -->
+            <div class="card mb-4">
+                <img [src]="levels['total'][getCurrentLevel(totalPoints, 'total')].img" class="card-img-top" alt="Level Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ levels['total'][getCurrentLevel(totalPoints, 'total')].label }}</h5>
+                    <p class="card-text">{{ levels['total'][getCurrentLevel(totalPoints, 'total')].description }}</p>
+                </div>
+            </div>
+
+            <!-- Gesamt-Fortschrittsbalken -->
+            <div class="progress-container">
+                <span>{{ getLevelName('total', totalPoints) }} - Total Points: {{ totalPoints }}</span>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" [style.width]="calculateProgressValue(totalPoints, 'total') + '%'" aria-valuenow="calculateProgressValue(totalPoints, 'total')" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <hr>
+            <br>
+
+<!-- Fortschrittsbalken für grüne Punkte -->
+<div class="progress-container">
+    <span>{{ getLevelName('green', greenPoints) }} - Green Points: {{ greenPoints }}</span>
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" [style.width]="calculateProgressValue(greenPoints, 'green') + '%'" aria-valuenow="calculateProgressValue(greenPoints, 'green')" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+
+<!-- Fortschrittsbalken für rote Punkte -->
+<div class="progress-container">
+    <span>{{ getLevelName('red', redPoints) }} - Red Points: {{ redPoints }}</span>
+    <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" [style.width]="calculateProgressValue(redPoints, 'red') + '%'" aria-valuenow="calculateProgressValue(redPoints, 'red')" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+
+<!-- Fortschrittsbalken für blaue Punkte -->
+<div class="progress-container">
+    <span>{{ getLevelName('blue', bluePoints) }} - Blue Points: {{ bluePoints }}</span>
+    <div class="progress">
+        <div class="progress-bar bg-info" role="progressbar" [style.width]="calculateProgressValue(bluePoints, 'blue') + '%'" aria-valuenow="calculateProgressValue(bluePoints, 'blue')" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+
+
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>

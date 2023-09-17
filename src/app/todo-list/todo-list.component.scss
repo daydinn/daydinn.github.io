@@ -46,3 +46,10 @@ select {
     display: flex; /* Verwendet Flexbox für das Layout */
     gap: 4px; /* Fügt einen Abstand von 10px zwischen den Icons hinzu */
   }
+
+
+  .table.custom-spacing th,
+.table.custom-spacing td {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}

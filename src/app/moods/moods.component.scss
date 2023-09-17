@@ -1,8 +1,12 @@
 
+.mood-image {
+  border: 8px solid white; 
+  border-radius: 50px;
+}
 
 .selected-mood {
-    border: 8px solid gold; /* Hier kannst du die gewünschten Rahmenstile festlegen */
-    border-radius: 50px;
+    border: 8px solid gold !important; 
+    border-radius: 50px !important;
   }
 
   

@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScoresComponent } from './scores/scores.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProgressComponent } from './user-progress/user-progress.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     MoodsComponent,
     ActivitysComponent,
     ScoresComponent,
-    TodoListComponent
+    TodoListComponent,
+    UserProgressComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,9 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbAlertModule
+    NgbAlertModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

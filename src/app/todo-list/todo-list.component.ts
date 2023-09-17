@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { ScoresService } from '../scores.service';
+import { TODOS } from '../todos.config';
 
 @Component({
   selector: 'app-todo-list',
@@ -61,33 +62,7 @@ hideAddForm() {
   
 
     // Initialized todos which will later be loaded from localStorage in ngOnInit
-  todos: Todo[] = [
-
-    {
-      id: 1,
-      label: 'Take a walk',
-      color: 'green',
-      isCompleted: false,
-      points: 1,
-      
-    },
-    {
-      id: 2,
-      label: 'Go to the gym',
-      color: 'red',
-      isCompleted: false,
-      points: 5,
-      
-    },
-    {
-      id: 3,
-      label: 'Check your Emails',
-      color: 'blue',
-      isCompleted: false,
-      points: 10,
-      
-    }
-  ];
+  todos: Todo[] = TODOS;
   newTodo: Todo = {
     id: 0,
     label: '',

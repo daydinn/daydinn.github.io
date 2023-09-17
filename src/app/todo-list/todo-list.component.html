@@ -63,19 +63,17 @@
   
   
 </div>
-  <table class="table table-striped ">
-            
-    <tbody>
-      <tr *ngFor="let todo of todos; let i = index;">
-        <th [style.color]="todo.color" scope="row">{{i+1}}</th>
-        <td [style.color]="todo.color" class="{{(todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.label}}</td>
-       
-        <td [style.color]="todo.color">{{todo.points}}</td>
-        <td style=" color: red; font-weight: bold; " (click)="remove(i)">X</td>
-      </tr>
-     </tbody>
-     
-    </table>
+<table class="table table-striped">
+  <tbody>
+    <tr class="spaced-row" *ngFor="let todo of todos; let i = index;">
+      <th [style.color]="todo.color" scope="row">{{i+1}}</th>
+      <td [style.color]="todo.color" class="{{(todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.label}}</td>
+      <td [style.color]="todo.color">{{todo.points}}</td>
+      <td style="color: red; font-weight: bold;" (click)="remove(i)">X</td>
+    </tr>
+  </tbody>
+</table>
+
     
    
 
