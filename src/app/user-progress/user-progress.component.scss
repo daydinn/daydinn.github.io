@@ -1,3 +1,7 @@
+html,body{
+    overflow:auto;}
+
+
 /* Stil für den allgemeinen Fortschrittsbalken */
 .custom-progress-bar ::ng-deep .mat-progress-bar-fill::after {
     background-color:pink  !important;
@@ -16,4 +20,16 @@
 /* Stil für den blauen Fortschrittsbalken */
 .blue-progress-bar ::ng-deep .mat-progress-bar-fill::after {
     background-color: #3498db;
+}
+
+
+.notes-display, .notes-textarea {
+   
+    width: 200px; /* adjust based on your needs */
+    height: 50px; /* adjust based on your needs */
+     /* ensures content doesn't spill out */
+    white-space: normal; /* ensures text wraps to the next line */
+    word-wrap: break-word; /* breaks the word if it's too long for the container */
+    overflow-y: scroll;
+  overflow-x: scroll;
 }

@@ -4,7 +4,7 @@ export const LEVELS = {
   green: [
     {
       label: 'Thoughtful Observer',
-      img: 'path/to/image1.jpg',
+      img: 'path/to/image1.jpg', 
       description: 'A beginner in mental practices and mindfulness.'
     },
     {
@@ -85,7 +85,7 @@ export const LEVELS = {
   total: [
     {
       label: 'Youngling',
-      img: 'https://images.unsplash.com/photo-1617799890023-c7b03d079b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      image: './assets/detox32.png', //img: 'https://images.unsplash.com/photo-1617799890023-c7b03d079b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
       description: 'A novice in the grand journey, still learning and growing.'
     },
     {

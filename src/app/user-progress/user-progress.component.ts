@@ -16,6 +16,7 @@ type ColorCategory = 'green' | 'red' | 'blue' | 'total';
 })
 export class UserProgressComponent {
 
+ 
       //Levels von der configdatei
       levels = LEVELS;
 
@@ -62,7 +63,13 @@ pointsForNextLevel: { [color: string]: number } = {
     this.redProgressValue = (this.redPoints / 100) * 100;
     this.blueProgressValue = (this.bluePoints / 100) * 100;
     this.totalProgressValue = (this.totalPoints / 300) * 100;  // Wenn 300 die maximale Punktzahl ist
-}
+    this.loadSavedMoods();
+    this.loadSavedActivities();
+  }
+
+
+
+
 
 
 getCurrentLevel(points: number, color: ColorCategory): number {
@@ -90,6 +97,84 @@ calculateProgressValue(points: number, color: ColorCategory): number {
   const progressToNextLevel = points - pointsForCurrentLevel;
 
   return (progressToNextLevel / this.pointsForNextLevel[color]) * 100;
+}
+
+
+//Moods
+savedMoods: { img: string, date: string, notes?: string }[] = [];
+hoveredActivities: { img: string, date: string, label: string, notes?: string }[] = [];
+selectedActivityIndex: number | null = null;
+selectedMoodIndex: number | null = null;
+
+
+loadSavedMoods() {
+  const retrievedData = localStorage.getItem('savedMoods');
+  if (retrievedData) {
+    this.savedMoods = JSON.parse(retrievedData);
+  }
+}
+
+
+
+
+
+selectMood(savedMood: any) {
+  this.selectedMoodIndex = this.savedMoods.indexOf(savedMood);
+}
+
+editNotes(index: number) {
+  this.selectedMoodIndex = index;
+}
+
+saveNotes() {
+  if (this.selectedMoodIndex !== null) {
+    // This will save notes in the savedMoods array
+    localStorage.setItem('savedMoods', JSON.stringify(this.savedMoods));
+    this.selectedMoodIndex = null; // To hide the textarea after saving
+  }
+}
+
+deleteMood(index: number) {
+  this.savedMoods.splice(index, 1);
+  localStorage.setItem('savedMoods', JSON.stringify(this.savedMoods));
+}
+
+deleteAllSavedMoods() {
+  this.savedMoods = [];
+  localStorage.removeItem('savedMoods');
+}
+
+
+//activities 
+
+
+
+
+
+loadSavedActivities() {
+  const retrievedData = localStorage.getItem('hoveredActivities');
+  if (retrievedData) {
+    this.hoveredActivities = JSON.parse(retrievedData);
+  }
+}
+
+editActivityNotes(index: number) {
+  this.selectedActivityIndex = index;
+}
+
+saveActivityNotes() {
+  localStorage.setItem('hoveredActivities', JSON.stringify(this.hoveredActivities));
+  this.selectedActivityIndex = null;
+}
+
+deleteAllSavedActivities() {
+  this.hoveredActivities = [];
+  localStorage.removeItem('hoveredActivities');
+}
+
+deleteActivity(index: number) {
+  this.hoveredActivities.splice(index, 1);
+  localStorage.setItem('hoveredActivities', JSON.stringify(this.hoveredActivities));
 }
 
 

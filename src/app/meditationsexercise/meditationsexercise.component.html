@@ -1,0 +1,16 @@
+<div 
+  class="breathing-circle" 
+  [ngClass]="{
+    'expanding': timerActive && phase === 'inhale', 
+    'holding': timerActive && phase === 'hold', 
+    'contracting': timerActive && phase === 'exhale'
+  }">    <div class="circle-text">
+      {{ phase }}
+    </div>
+    <div class="timer" *ngIf="timerActive">{{ timerValue }}</div>
+</div>
+
+<div>
+    <button class="start-button" (click)="toggleTimer()" [disabled]="timerActive">Start</button>
+    <button class="stop-button" (click)="toggleTimer()" [disabled]="!timerActive">Stop</button>
+</div>

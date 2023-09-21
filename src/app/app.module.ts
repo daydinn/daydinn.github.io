@@ -14,6 +14,8 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserProgressComponent } from './user-progress/user-progress.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MeditationsexerciseComponent } from './meditationsexercise/meditationsexercise.component';
+import { StartpageComponent } from './startpage/startpage.component';
 
 
 
@@ -26,6 +28,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ScoresComponent,
     TodoListComponent,
     UserProgressComponent,
+    MeditationsexerciseComponent,
+    StartpageComponent,
+    
+   
+   
     
   ],
   imports: [
@@ -37,7 +44,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReactiveFormsModule,
     NgbAlertModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
