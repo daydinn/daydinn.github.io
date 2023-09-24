@@ -85,27 +85,27 @@ export const LEVELS = {
   total: [
     {
       label: 'Youngling',
-      image: './assets/detox32.png', //img: 'https://images.unsplash.com/photo-1617799890023-c7b03d079b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      image : './assets/detox32.png', img: './assets/shield.svg',
       description: 'A novice in the grand journey, still learning and growing.'
     },
     {
       label: 'Padawan',
-      img: 'https://img.freepik.com/premium-photo/anthropomorphic-bird-pilgrim-s-robe-generative-ai_549857-3392.jpg?w=740',
+      img: './assets/shield2.svg',
       description: 'Making progress, honing skills and acquiring knowledge.'
     },
     {
       label: 'Jedi Knight',
-      img: 'https://images.unsplash.com/photo-1683509345856-e1ea4f04b806?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      img: './assets/shield3.svg',
       description: 'A hero who has achieved much, yet still seeks to learn and grow.'
     },
     {
       label: 'Jedi Master',
-      img: 'path/to/image4c.jpg',
+      img: './assets/diamond.svg',
       description: 'An expert with vast knowledge and experience, guiding others.'
     },
     {
       label: 'Chosen One',
-      img: 'path/to/image4d.jpg',
+      img: './assets/king.svg',
       description: 'Reached the pinnacle of potential, embodying excellence in every aspect.'
     }
   ]

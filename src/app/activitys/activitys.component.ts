@@ -17,6 +17,7 @@ export class ActivitysComponent implements OnInit {
   hoveredActivities: Activity[] = [];
   
   showInfoWindow = false;
+  showAddNewActivity = false;
   selectedActivity: any;
 
   
@@ -54,10 +55,12 @@ export class ActivitysComponent implements OnInit {
   }
 
   toggleHover(activity: Activity) {
-
-
-    activity.isHovered = !activity.isHovered;
-
+     
+    if (!this.deleteMode && !this.showInfoPage){
+     
+      activity.isHovered = !activity.isHovered;
+    }
+    
     if (activity.isHovered) {
         localStorage.setItem(`activity-hovered-${activity.label}`, 'true');
         this.scoresService.addScore(activity.color, activity.points);
@@ -106,16 +109,29 @@ saveActivityWithDate(selectedActivity: Activity) {
   
   
   showInfoPage = false; 
+  deleteMode = false;
 
   toggleInfoPage() {
     this.showInfoPage = !this.showInfoPage;
   }
 
 
-  isKlicked = false; 
+  isKlickedInfo= false;
+  isKlickedDelete= false;
+  isKlickedAdd= false;
 
-  toggleClass() {
-    this.isKlicked = !this.isKlicked; 
+  toggleClassInfo() {
+    this.isKlickedInfo = !this.isKlickedInfo; 
+  }
+
+  toggleClassDelete() {
+    this.isKlickedDelete = !this.isKlickedDelete; 
+  }
+
+  toggleClassAddNewActivity(){
+    this.isKlickedAdd = !this.isKlickedAdd; 
+
+
   }
 
   getHoveredActivities(): Activity[] {
@@ -137,7 +153,8 @@ saveActivityWithDate(selectedActivity: Activity) {
     points: 0,
     isHovered: false,
     img: './assets/customActivity32.png',
-    hoveredImg: './assets/customActivity32.png'
+    hoveredImg: './assets/customActivity32.png',
+    isNewActivity: true,
 };
 saveActivity() {
   
@@ -154,17 +171,33 @@ saveActivity() {
       points: 0,
       isHovered: false,
       img: './assets/customActivity32.png',
-      hoveredImg: './assets/customActivity32.png'
+      hoveredImg: './assets/customActivity32.png',
+      isNewActivity: true,
   };
   localStorage.setItem('activitysList', JSON.stringify(this.activitys));
 }
 
-
-
-
+toggleDeleteMode() {
+  this.deleteMode = !this.deleteMode;
 }
 
-
+deleteActivity(activity: Activity) {
+  if (this.deleteMode && !activity.isNewActivity && !this.showInfoWindow) {
+    const index = this.activitys.indexOf(activity);
+    if (index > -1) {
+      this.activitys.splice(index, 1);
+      localStorage.removeItem(`activity-hovered-${activity.label}`);
+      localStorage.setItem('activitysList', JSON.stringify(this.activitys));
+      // if you also store activities in another array or object, remember to delete from there too
+    }
+    
+  }
+  
+  if(this.deleteMode && !activity.isNewActivity) {
+    alert("This activity cannot be deleted.");
+  }
+}
+}
 
 
 

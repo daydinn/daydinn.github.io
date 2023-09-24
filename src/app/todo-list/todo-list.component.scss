@@ -22,6 +22,13 @@ select {
   }
   
 
+
+.formicon{
+    filter: opacity(0.3) drop-shadow(0 0 0 green);
+
+
+  }
+
 .formicon, .addnewtodo{
   
     cursor: pointer; /* Ändert den Cursor auf einen Zeiger, wenn über das Icon gehovert wird */
@@ -30,12 +37,66 @@ select {
  
 
 /* Hover-Effekt: Vergrößern das Icon leicht beim Hover */
+
+
+
 .formicon:hover{
     transform: scale(1.1);
+    filter: opacity(0.7) drop-shadow(0 0 0 green);
+
   }
+
+  .formicon-clicked{
+  
+    filter: opacity(1.0) drop-shadow(0 0 0 green);
+    
+  
+  }
+
+
 .addnewtodo:hover{
     transform: scale(1.1);  
 }
+
+.isCompleted{
+  cursor: pointer
+}
+.isCompleted:hover{
+  transform: scale(1.1);
+  
+}
+.isCompleted:active{
+  transform: scale(1.2);
+}
+
+
+.deleteTodo{
+
+  cursor: pointer;
+}
+.deleteTodo:hover{
+  transform: scale(1.1);
+ cursor: pointer;
+ 
+}
+
+.deleteTodo:active{
+  
+  transform: scale(1.2);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -53,3 +114,5 @@ select {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+
+

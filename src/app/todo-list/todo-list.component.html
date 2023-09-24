@@ -19,12 +19,13 @@
     <div class="row">
         <div  class="col-12 ">
     <div class="form-buttons ml-auto">
-      
-        <!-- Add-Icon -->
-       <img class="formicon" (click)="showAddTodoForm = !showAddTodoForm" src="assets/add.png" alt="Add Icon"  />
+
+
+        
+      <!-- Add-Icon -->
+       <img class="formicon" (click)="showAddTodoForm = !showAddTodoForm" src="assets/add32.png" alt="Add Icon"  />
     
         <!-- Close-Icon -->
-      <img class="formicon" (click)="hideAddForm()" src="assets/close.png" alt="Cancel Icon"/>
       </div>
     </div>
     </div>
@@ -50,13 +51,12 @@
     </div>
     <div class="form-group">
       <label for="points">Points:</label>
-      <input type="number" id="points" name="points" class="form-control" [(ngModel)]="newTodo.points" required>
+      <input type="number" id="points" name="points" class="form-control" [(ngModel)]="newTodo.points" required> 
     </div>
 
     
-<!--ng if scheint hier nicht zu funktionieren-->
-<!--<img class="addnewtodo my-2" *ngIf="showAddTodoForm" src="assets/plus.png" alt="Add New Todo"  />-->
-<button type="submit" class="btn btn-primary" *ngIf="showAddTodoForm">Add Todos</button>
+
+<button type="submit" class="btn btn-success mt-2" *ngIf="showAddTodoForm">Add </button>
 
 
   </form>
@@ -65,11 +65,17 @@
 </div>
 <table class="table table-striped">
   <tbody>
+    <tr>
+      <th>Order</th>
+      <th>Todo</th>
+      <th>Points</th>
+      <th>Delete</th>
+  </tr>
     <tr class="spaced-row" *ngFor="let todo of todos; let i = index;">
       <th [style.color]="todo.color" scope="row">{{i+1}}</th>
-      <td [style.color]="todo.color" class="{{(todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.label}}</td>
+      <td class="isCompleted" [style.color]="todo.color" class="{{(todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.label}}</td>
       <td [style.color]="todo.color">{{todo.points}}</td>
-      <td style="color: red; font-weight: bold;" (click)="remove(i)">X</td>
+      <td  class="deleteTodo" style="color: red; font-weight: bold;" (click)="remove(i)">X</td>
     </tr>
   </tbody>
 </table>

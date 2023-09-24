@@ -7,6 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ScoresService {
 
+
+
+
+
+  
   // Initialize scores with an object for each color category.
   private scores: { 
     [key: string]: BehaviorSubject<number> 

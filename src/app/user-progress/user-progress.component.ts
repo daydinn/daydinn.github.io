@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ScoresService } from '../scores.service';
-
+import { NgChartsModule } from 'ng2-charts';
 import { LEVELS } from '../levels.config';
 
 
  
 type ColorCategory = 'green' | 'red' | 'blue' | 'total';
+
 
 
 
@@ -15,6 +16,11 @@ type ColorCategory = 'green' | 'red' | 'blue' | 'total';
   styleUrls: ['./user-progress.component.scss']
 })
 export class UserProgressComponent {
+
+
+
+
+
 
  
       //Levels von der configdatei
@@ -32,6 +38,9 @@ export class UserProgressComponent {
     redProgressValue: number;
     blueProgressValue: number;
 
+
+  constructor(private scoresService: ScoresService) {}
+
 // Die Punkte, die benötigt werden, um das nächste Level zu erreichen
 pointsForNextLevel: { [color: string]: number } = {
   green: 100,
@@ -43,13 +52,13 @@ pointsForNextLevel: { [color: string]: number } = {
 
 
 
-
-
-
-  constructor(private scoresService: ScoresService) {}
-
-
-
+ public lineChartData: { data: number[], label: string }[] = [
+  { data: [], label: 'Green Points' },
+  { data: [], label: 'Red Points' },
+  { data: [], label: 'Blue Points' },
+  { data: [], label: 'Total Points' }
+];
+public lineChartLabels: string[] = []; // für das Datum
   
   ngOnInit() {
     // Punkte abrufen und speichern
@@ -65,12 +74,53 @@ pointsForNextLevel: { [color: string]: number } = {
     this.totalProgressValue = (this.totalPoints / 300) * 100;  // Wenn 300 die maximale Punktzahl ist
     this.loadSavedMoods();
     this.loadSavedActivities();
+    
+
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}.${(currentDate.getMonth() + 1).toString().padStart(2, '0')}.${currentDate.getFullYear()}`;
+    this.lineChartLabels.push(formattedDate); // Aktuelles Datum hinzufügen
+    this.lineChartData[0].data.push(this.greenPoints);
+    this.lineChartData[1].data.push(this.redPoints);
+    this.lineChartData[2].data.push(this.bluePoints);
+    this.lineChartData[3].data.push(this.totalPoints);
+
+
+
+    this.lineChartData = [
+      {
+        data: [this.greenPoints],  // Machen Sie es zu einem Array
+        label: 'Mental Score',
+        backgroundColor: 'rgba(23, 162, 184, 0.5)', // Blue with 50% opacity (#17a2b8)
+        borderColor: '#17a2b8' // Solid blue
+      } as any, // Bypass TypeScript checking with `as any`
+          
+      {
+        data: [this.redPoints],  // Machen Sie es zu einem Array
+        label: 'Physical Score',
+        backgroundColor: 'rgba(220, 53, 69, 0.5)', // Red with 50% opacity (#dc3545)
+        borderColor: '#dc3545' // Solid red
+      } as any, // Bypass TypeScript checking with `as any`
+          
+      {
+        data: [this.bluePoints],  // Machen Sie es zu einem Array
+        label: 'Productivity Score',
+        backgroundColor: 'rgba(40, 167, 69, 0.5)', // Green with 50% opacity (#28a745)
+        borderColor: '#28a745' // Solid green
+      } as any, // Bypass TypeScript checking with `as any`
+    
+      {
+        data: [this.totalPoints],  // Machen Sie es zu einem Array
+        label: 'Total Score',
+        backgroundColor: 'rgba(255, 193, 7, 0.5)', // Yellow with 50% opacity (#ffc107)
+        borderColor: '#ffc107' // Solid yellow
+      } as any, // Bypass TypeScript checking with `as any`
+            
+     
+    ];
+
   }
 
-
-
-
-
+  
 
 getCurrentLevel(points: number, color: ColorCategory): number {
   const levelIndex = Math.min(this.levels[color].length - 1, Math.floor(points / this.pointsForNextLevel[color]));

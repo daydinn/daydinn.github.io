@@ -6,4 +6,5 @@ hoveredImg: string;
 color: string;
 points: number;
 isHovered: boolean;
+isNewActivity: boolean,
 }

@@ -1,0 +1,14 @@
+.small-mobile {
+    font-size: inherit;
+}
+
+/* Für Geräte mit einer maximalen Bildschirmbreite von 768px */
+@media (max-width: 768px) {
+    .small-mobile {
+        font-size: 0.875rem; /* Dies ist die Größe von Bootstrap's .small */
+    }
+}
+
+body{
+    background:    blue !important;
+    }

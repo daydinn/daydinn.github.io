@@ -23,13 +23,55 @@ html,body{
 }
 
 
-.notes-display, .notes-textarea {
-   
-    width: 200px; /* adjust based on your needs */
+.notes-display, .notes-textarea  {
+   max-width: 250px;
+    min-width: 75px; /* adjust based on your needs */
     height: 50px; /* adjust based on your needs */
      /* ensures content doesn't spill out */
     white-space: normal; /* ensures text wraps to the next line */
     word-wrap: break-word; /* breaks the word if it's too long for the container */
     overflow-y: scroll;
   overflow-x: scroll;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+
+
+
+
+  .deleteIcon:hover{
+    transform: scale(1.1);
+    filter: opacity(0.7) drop-shadow(0 0 0 red);
+  
+  }
+  .deleteIcon-clicked {
+  
+    filter: opacity(0.5) drop-shadow(0 0 0 red);
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: blue;
+  }
+  
+  .table-hover tbody tr.active-row {
+    background-color: blue;
+  }
+
+  .active-row {
+    background-color:blue !important;
+}
+
+table tbody tr.active-row {
+  background-color: #f5f5f5;
+}
+
+table.table tbody tr.active-row {
+  background-color: blue !important;
 }

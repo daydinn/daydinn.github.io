@@ -15,7 +15,7 @@ export class TodoListComponent implements OnInit { // <-- Implements OnInit for 
   colors: string[] = ['green', 'red', 'blue'];
 
 
-    // Constructor where the ScoreService is injected.
+ 
     constructor(private scoresService: ScoresService) {
       const savedTodos = localStorage.getItem('todos');
       if (savedTodos) {
@@ -28,8 +28,7 @@ export class TodoListComponent implements OnInit { // <-- Implements OnInit for 
   
   
   
-  // Lifecycle hook that gets executed after component's initialization.
-  // Here we're trying to load todos from localStorage.
+  
   ngOnInit() {
     const savedTodos = localStorage.getItem('todos'); // Retrieve the todos from localStorage
     if (savedTodos) {
@@ -76,7 +75,7 @@ hideAddForm() {
 
 saveTodo(){
 
-  // Fügen Sie das neue Todo-Objekt zur Liste hinzu
+  
   if(this.newTodo.label ){
    
     
@@ -85,7 +84,7 @@ saveTodo(){
     this.newTodo = {
       label: '',
       id: 0,
-      color: 'blue', // Zurücksetzen auf Standardfarbe
+      color: 'blue', 
       isCompleted: false,
       points: 0,
       

@@ -3,47 +3,103 @@
 
 
 <div class="container-sm ">
-  <!-- Button, um die Info-Seite zu öffnen -->
+
+  <!-- Hidden checkboxes for showInfoPage, deleteMode,AddNewActivity -->
   <div class="row mt-3">
 
     <input type="checkbox" [(ngModel)]="showInfoPage" class="hidden-checkbox" id="infoCheckbox">
 
-    <!-- Icon, das die Checkbox steuert -->
-    <label class="checkbox-label" for="infoCheckbox">
-      <span class="checkbox-custom">
-        <img src="/assets/info2.png" alt="Custom Icon" [ngClass]="{'infoCheckbox-clicked': isKlicked}" (click)="toggleClass()" class="infoCheckboxIcon"> <!-- Ihr benutzerdefiniertes Icon -->
-      </span>
-    </label>
+    <input type="checkbox" [(ngModel)]="deleteMode" class="hidden-checkbox" id="deleteCheckbox">
+    
+    <input type="checkbox" [(ngModel)]="showAddNewActivity" class="hidden-checkbox" id="addActivityCheckbox">
+
+    
+    
+    
+
+
+
 
 
 
 
 </div>
+
+<div class="container-fluid-sm d-flex flex-row-reverse ">
+ 
+
+  <img  class="justify-content-start d-flex   "src="/assets/reload32.png" alt="Unhover Icon" class="unhover-icon" (click)="unhoverAllActivities()">
+
+
+ 
+ <!-- Icon, das die Checkbox steuert -->
+ <label class="checkbox-label d-flex justify-content-end me-5 ms-3 " for="deleteCheckbox">
+  <span class="checkbox-custom">
+    <img src="/assets/delete32.png" alt="Custom Icon" [ngClass]="{'deleteCheckbox-clicked': isKlickedDelete}" (click)="toggleClassDelete()" class="deleteCheckboxIcon"> 
+  </span>
+</label>
+ 
+  <!-- Icon, das die Checkbox steuert -->
+ <label class="checkbox-label d-flex justify-content-end ms-3  " for="infoCheckbox">
+  <span class="checkbox-custom">
+    <img src="/assets/info32.png" alt="Custom Icon" [ngClass]="{'infoCheckbox-clicked': isKlickedInfo}" (click)="toggleClassInfo()" class="infoCheckboxIcon"> 
+  </span>
+  </label>
+
+
   
+
+<!-- Icon, das die Checkbox steuert -->
+<label class="checkbox-label d-flex justify-content-end ms-4" for="addActivityCheckbox">
+  <span class="checkbox-custom">
+    <img src="/assets/add32.png" alt="Custom Icon" [ngClass]="{'addCheckbox-clicked': isKlickedAdd}" (click)="toggleClassAddNewActivity()" class="addCheckboxIcon"> 
+  </span>
+</label>
+
+
+</div>
 
   <!-- Scroll-Container für Aktivitäten -->
   <div class="scroll-container text-center">
-    <div class="row">
-      <!-- Input form for the new activity -->
-<div class="activity-form">
-  <input [(ngModel)]="newActivity.label" placeholder="Label" />
-  <textarea [(ngModel)]="newActivity.description" placeholder="Description"></textarea>
-  <select [(ngModel)]="newActivity.color">
-      <option value="green">Green</option>
-      <option value="blue">Blue</option>
-      <option value="red">Red</option>
-  </select>
-  <input [(ngModel)]="newActivity.points" type="number" placeholder="Points" />
-  <button (click)="saveActivity()">Create Activity</button>
-</div>
+    <!-- Input form for the new activity -->
 
-      <div class="col-3" *ngFor="let activity of activitys">
+      
+    <div class="activity-form  container-fluid p-4 rounded shadow-sm bg-white" *ngIf="showAddNewActivity">
+      <div class="form-group">
+        <input class="form-control" [(ngModel)]="newActivity.label" type="text" placeholder="Label">
+      </div>
+    
+      <div class="form-group">
+        <textarea class="form-control" [(ngModel)]="newActivity.description" placeholder="Description"></textarea>
+      </div>
+    
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="newActivity.color">
+          <option value="green">Mental</option>
+          <option value="blue">Physical</option>
+          <option value="red">Productive</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <input class="form-control" [(ngModel)]="newActivity.points" type="number" placeholder="0 points">
+      </div>
+    
+      <button class="btn btn-success" (click)="saveActivity()">Create Activity</button>
+    </div>
+    
+    <div class="row">
+      
+      
+      
+
+      <div class="col-3" *ngFor="let activity of activitys " (click)="deleteActivity(activity)" >
         
-        <div class="activity-card" (click)="showActivityInfo(activity)">
+        <div class="activity-card">
           <div class="activity" (click)="toggleHover(activity)"  >
             <img [src]="activity.isHovered ? activity.hoveredImg : activity.img" alt="{{ activity.label }}" class="img-fluid activity-image mt-2" [class.hovered]="activity.isHovered"
             [style.border]="activity.isHovered ? '4px solid gold' : getBorderStyle(activity.color)"
-                (click)="showActivityInfo(activity)">
+                (click)="showActivityInfo(activity)" (click)="deleteActivity(activity)">
         </div>
         
 
@@ -51,8 +107,11 @@
         </div>
       </div>
     </div>
+    
   </div>
-  <button (click)="unhoverAllActivities()">Unhover All Activities</button>
+
+
+
   <!-- Großes Fenster für Aktivitätsinformationen -->
   <div class="container-sm text-center">
     <div class="row mt-3">
