@@ -253,7 +253,7 @@
 }
 
 .hovered {
-  border-color: gold !important; /* Ändern Sie die Border-Farbe auf Gold */
+  border-color: gold !important; 
   border-width: 4px !important;
 }
 
@@ -301,10 +301,10 @@
   margin-right: -7px;
 }
 
-/* SCSS in Ihrer activitys.component.scss-Datei oder Ihrem Stylesheet */
+
 .hidden-checkbox {
   position: absolute;
-  left: -9999px; /* Checkbox außerhalb des sichtbaren Bereichs verschieben */
+  left: -9999px; 
 }
 
 .checkbox-label {
@@ -312,15 +312,15 @@
   text-align: end;
 
   .checkbox-custom {
-    /* Stil für das benutzerdefinierte Icon */
-    width: 24px; /* Beispiel für eine CSS-Deklaration */
-    height: 24px; /* Beispiel für eine CSS-Deklaration */
+   
+    width: 24px; 
+    height: 24px; 
   }
 
   /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
   #infoCheckbox:checked + & .checkbox-custom {
-    /* Stil für das aktivierte Icon */
-    color: blue; /* Beispiel für eine CSS-Deklaration */
+    
+    color: blue; 
   }
 }
 

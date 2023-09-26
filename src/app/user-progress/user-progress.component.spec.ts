@@ -8,7 +8,7 @@ describe('UserProgressComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserProgressComponent]
+      declarations: [UserProgressComponent],
     });
     fixture = TestBed.createComponent(UserProgressComponent);
     component = fixture.componentInstance;

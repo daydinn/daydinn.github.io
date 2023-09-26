@@ -7,17 +7,15 @@ import { UserProgressComponent } from './user-progress/user-progress.component';
 import { StartpageComponent } from './startpage/startpage.component';
 
 const routes: Routes = [
-  
   { path: '', component: StartpageComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'moods', component: MoodsComponent },
-  { path: 'activitys', component: ActivitysComponent},
-  { path: 'progression', component: UserProgressComponent},
-
+  { path: 'activitys', component: ActivitysComponent },
+  { path: 'progression', component: UserProgressComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

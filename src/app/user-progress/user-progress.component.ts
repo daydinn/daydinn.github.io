@@ -171,14 +171,16 @@ export class UserProgressComponent {
   selectMood(savedMood: any) {
     this.selectedMoodIndex = this.savedMoods.indexOf(savedMood);
   }
-/**
- * Setzt den Index der ausgewählten Stimmung für die Bearbeitung von Notizen.
- * @param index - Index der Stimmung im Array.
- */
+  /**
+   * Setzt den Index der ausgewählten Stimmung für die Bearbeitung von Notizen.
+   * @param index - Index der Stimmung im Array.
+   */
   editNotes(index: number) {
     this.selectedMoodIndex = index;
   }
-
+  /**
+   * Speichert die Notizen für die ausgewählte Stimmung und aktualisiert den lokalen Speicher.
+   */
   saveNotes() {
     if (this.selectedMoodIndex !== null) {
       // Dadurch werden die Notizen im Array savedMoods gespeichert

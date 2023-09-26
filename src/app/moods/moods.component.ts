@@ -29,15 +29,18 @@ export class MoodsComponent implements OnInit, OnDestroy {
   moods = MOODS;
   selectedMod: any;
 
+  // Liste der gespeicherten Stimmungen mit Datum
   savedMoods: { img: string; date: string }[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
+    //Versucht, gespeicherte Stimmungen aus dem localStorage zu laden
     const retrievedData = localStorage.getItem('savedMoods');
     if (retrievedData) {
       this.savedMoods = JSON.parse(retrievedData);
     }
+    // Lädt zufällige Stimmungsvorschläge in einem zeitlichen Intervall
     setTimeout(() => {
       this.sadSuggestion = this.getRandomSuggestionFrom(this.sadSuggestions);
 
@@ -58,7 +61,7 @@ export class MoodsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.resetMoodSelection();
   }
-
+  // Wechselt die Auswahl der Stimmung
   toggleMoodSelection(mood: any) {
     this.moods
       .filter((m) => m.color === mood.color)
@@ -68,7 +71,7 @@ export class MoodsComponent implements OnInit, OnDestroy {
 
     this.saveMoodWithDate(mood);
   }
-
+  // Speichert die ausgewählte Stimmung mit Datum in localStorage
   saveMoodWithDate(selectedMood: any) {
     const formattedDateTime = getFormattedDateTime();
 
@@ -78,23 +81,23 @@ export class MoodsComponent implements OnInit, OnDestroy {
     // Store in localStorage
     localStorage.setItem('savedMoods', JSON.stringify(this.savedMoods));
   }
-
+  // Lädt gespeicherte Stimmungen aus dem localStorage
   loadSavedMoods() {
     const storedMoods = localStorage.getItem('savedMoods');
     if (storedMoods) {
       this.savedMoods = JSON.parse(storedMoods);
     }
   }
-
+  // Gibt einen zufälligen Stimmungsvorschlag aus einem Array zurück
   getRandomSuggestionFrom(array: string[]): string {
     const index = Math.floor(Math.random() * array.length);
     return array[index];
   }
-
+  // Überprüft, ob eine bestimmte Stimmung ausgewählt ist
   isMoodSelected(label: string): boolean {
     return this.moods.some((mood) => mood.label === label && mood.isSelected);
   }
-
+  // Setzt die Auswahl der Stimmungen und deren Vorschläge zurück
   resetMoodSelection(): void {
     this.moods.forEach((mood) => (mood.isSelected = false));
     this.sadSuggestion = null;

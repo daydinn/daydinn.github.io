@@ -19,7 +19,6 @@ import { StartpageComponent } from './startpage/startpage.component';
 import { NgChartsModule } from 'ng2-charts';
 import { SafeUrlPipe } from './safe-url.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,10 +31,6 @@ import { SafeUrlPipe } from './safe-url.pipe';
     MeditationsexerciseComponent,
     StartpageComponent,
     SafeUrlPipe,
-    
-   
-   
-    
   ],
   imports: [
     BrowserModule,
@@ -47,10 +42,9 @@ import { SafeUrlPipe } from './safe-url.pipe';
     NgbAlertModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    NgChartsModule
-    
+    NgChartsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

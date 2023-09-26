@@ -5,11 +5,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   name: 'safeUrl',
 })
 export class SafeUrlPipe implements PipeTransform {
-
-  // Constructor der Klasse, der eine Instanz von DomSanitizer injiziert. 
-  // DomSanitizer wird verwendet, um URLs als sicher zu markieren und zu verhindern, 
+  // Constructor der Klasse, der eine Instanz von DomSanitizer injiziert.
+  // DomSanitizer wird verwendet, um URLs als sicher zu markieren und zu verhindern,
   // dass Angular sie als potenziell schädlich blockiert.
-  
+
   constructor(private domSanitizer: DomSanitizer) {}
 
   transform(url: string): SafeResourceUrl {
