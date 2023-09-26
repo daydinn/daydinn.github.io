@@ -75,7 +75,7 @@ export class ActivitysComponent implements OnInit {
   toggleHover(activity: Activity) {
     if (!this.deleteMode && !this.showInfoPage) {
       activity.isHovered = !activity.isHovered;
-    }
+   
 
     if (activity.isHovered) {
       localStorage.setItem(`activity-hovered-${activity.label}`, 'true');
@@ -93,7 +93,7 @@ export class ActivitysComponent implements OnInit {
     }
     localStorage.setItem('activitysList', JSON.stringify(this.activitys));
   }
-
+}
   saveActivityWithDate(selectedActivity: Activity) {
     const currentTime = getFormattedDateTime();
 
@@ -186,17 +186,21 @@ export class ActivitysComponent implements OnInit {
   }
   // Löscht eine ausgewählte Aktivität, wenn sie nicht neu ist und das Infofenster nicht angezeigt wird.
   deleteActivity(activity: Activity) {
-    if (this.deleteMode && !activity.isNewActivity && !this.showInfoWindow) {
-      const index = this.activitys.indexOf(activity);
-      if (index > -1) {
-        this.activitys.splice(index, 1);
-        localStorage.removeItem(`activity-hovered-${activity.label}`);
-        localStorage.setItem('activitysList', JSON.stringify(this.activitys));
-      }
-    }
+    console.log("Löschmodus: ", this.deleteMode);
+    console.log("isNewActivity Wert: ", activity.isNewActivity);
+    console.log("Infofenster aktiv: ", this.showInfoWindow);
 
-    if (this.deleteMode && !activity.isNewActivity) {
-      alert('This activity cannot be deleted.');
+    if (this.deleteMode && activity.isNewActivity && !this.showInfoPage) {
+        const index = this.activitys.indexOf(activity);
+        console.log("Index der zu löschenden Aktivität: ", index);
+
+        if (index > -1) {
+            this.activitys.splice(index, 1);
+            localStorage.removeItem('activity');
+            localStorage.setItem('activitysList', JSON.stringify(this.activitys));
+        }
+    } else if (this.deleteMode) {
+        alert('this activity cannot be deleted ');
     }
-  }
+}
 }

@@ -4,7 +4,7 @@
   <!-- Hauptcontainer für die Stimmungsauswahl -->
   <div class="container-sm text-center overflow-hidden">
     <!-- Reihe für die Darstellung der Stimmungen -->
-    <div class="row mt-5">
+    <div class="row mt-1">
       <!-- Wiederholte Spalten für jede Stimmung. Der *ngFor-Direktive wird verwendet, um durch das Array "moods" zu iterieren -->
       <div class="col-4" *ngFor="let mood of moods">
         <!-- Ein Klick auf das Stimmungsbild wechselt dessen Auswahlstatus -->
@@ -21,9 +21,9 @@
     </div>
   </div>
   <!-- Container für Vorschläge basierend auf der ausgewählten Stimmung -->
-  <div class="container-sm suggestions-container">
+  <div class="container-sm suggestions-container mt-5">
     <div class="row sm-3">
-      <div class="col-8">
+      <div class="col-8 mt-3">
         <!-- Zeigt einen zufälligen Vorschlag, wenn die Stimmung "Sad" ist -->
         <div class="tip-container" *ngIf="isMoodSelected('Sad')">
           <img style="float: lef" src="./assets/tip.png" alt="tip icon" />

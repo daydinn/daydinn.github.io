@@ -1,10 +1,10 @@
-export interface Activity {
+export interface Activity{
   label: string;
   description: string;
-  img: string;
+  img:   string;
   hoveredImg: string;
   color: string;
   points: number;
   isHovered: boolean;
-  isNewActivity: boolean;
-}
+  isNewActivity: boolean,
+  }
