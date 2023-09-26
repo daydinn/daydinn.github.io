@@ -1,105 +1,124 @@
 /* Allgemeine Stilvorgaben */
 body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-    
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
 
-  .breathing-circle {
-    width: 250px;
-    height: 250px;
-    border: 5px solid #3498db;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    transition: all 4s ease-in-out;
-    transition: transform 4s ease-in-out;
-    position: relative;
+/* Stil für den Atmungskreis */
+.breathing-circle {
+  width: 250px;
+  height: 250px;
+  margin: auto;  /* Zentriert den Kreis */
+  margin-top: 30px;
+  text-align: center;
+  border: 5px solid #3498db;  /* Kreis-Randfarbe */
+  border-radius: 50%;          /* Erzeugt einen Kreis */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+   /* Animation und Übergänge */
+  transition: all 4s ease-in-out;
+  transition: transform 4s ease-in-out;  /* Sanfter Übergang der Transformation */
+  position: relative;
+}
+
+.circle-text {
+  text-align: center;
+  font-size: 2em;
+  color: #3498db;
+}
+/* Animation für die "inhale"-Phase */
+.expanding {
+  animation: breatheIn 4s forwards;  /* Verweist auf die "breatheIn"-Animation */
+}
+
+@keyframes breatheIn {
+    /* Start der Animation */
+  0% {
+    transform: scale(1);   /* Ursprüngliche Größe */
   }
-  
-  .circle-text {
-    text-align: center;
-    font-size: 2em;
-    color: #3498db;
+  50% {
+    transform: scale(1.2);  /* Vergrößert auf 120% */
+    border-color: #e74c3c;
   }
-  
-  .expanding {
-    animation: breatheIn 4s forwards;
-  }
-  
-  @keyframes breatheIn {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); border-color: #e74c3c; } 
-    100% { transform: scale(1.2); border-color: #e74c3c; } 
-  }
-  
-  .holding {
+  100% {
     transform: scale(1.2);
     border-color: #e74c3c;
   }
-  
-  .contracting {
-    animation: breatheOut 4s forwards;
+}
+/* Stil für die "hold"-Phase */
+.holding {
+  transform: scale(1.2);
+  border-color: #e74c3c;
+}
+/* Animation für die "exhale"-Phase */
+.contracting {
+  animation: breatheOut 4s forwards; /* Verweist auf die "breatheOut"-Animation */
+}
+
+@keyframes breatheOut {
+  0% {
+    transform: scale(1.2);
+    border-color: #e74c3c;
   }
-  
-  @keyframes breatheOut {
-    0% { transform: scale(1.2); border-color: #e74c3c; }
-    100% { transform: scale(1); border-color: #3498db; }
+  100% {
+    transform: scale(1);
+    border-color: #3498db;
   }
-  
-  .start-button,
-  .stop-button {
-    padding: 15px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    margin: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    outline: none;
-    transition: 0.3s;
-  }
-  
-  .start-button {
-    background-color: #2ecc71;
-    color: white;
-  }
-  
-  .start-button:hover {
-    background-color: #27ae60;
-  }
-  
-  .stop-button {
-    background-color: #e74c3c;
-    color: white;
-  }
-  
-  .stop-button:hover {
-    background-color: #c0392b;
-  }
-  
-  .start-button:disabled,
-  .stop-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  
-  .timer {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-size: 1.5em;
-  }
-  
+}
+
+/* Gemeinsame Stile für Start- und Stopp-Buttons */
+.start-button,
+.stop-button {
+  padding: 15px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  margin: 10px;
+  margin-top: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: 0.3s;
+}
+
+.start-button {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.start-button:hover {
+  background-color: #27ae60;
+}
+
+.stop-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.stop-button:hover {
+  background-color: #c0392b;
+}
+
+.start-button:disabled,
+.stop-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.timer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 1.5em;
+}

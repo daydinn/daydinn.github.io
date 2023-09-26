@@ -1,71 +1,72 @@
-html,body{
-    overflow:auto;}
+/* Erlaubt den Inhalt des HTML- und Body-Elements zu scrollen */
+html,
+body {
+  overflow: auto;
+}
 
-
-/* Stil für den allgemeinen Fortschrittsbalken */
+/* Definiert einen benutzerdefinierten Fortschrittsbalken mit einer rosafarbenen Füllung */
 .custom-progress-bar ::ng-deep .mat-progress-bar-fill::after {
-    background-color:pink  !important;
+  background-color: pink !important;
 }
 
-/* Stil für den grünen Fortschrittsbalken */
+/* Definiert einen grünen Fortschrittsbalken */
 .green-progress-bar ::ng-deep .mat-progress-bar-fill::after {
-    background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
-/* Stil für den roten Fortschrittsbalken */
+/* Definiert einen roten Fortschrittsbalken */
 .red-progress-bar ::ng-deep .mat-progress-bar-fill::after {
-    background-color: pink;
+  background-color: pink;
 }
 
-/* Stil für den blauen Fortschrittsbalken */
+/* Definiert einen blauen Fortschrittsbalken */
 .blue-progress-bar ::ng-deep .mat-progress-bar-fill::after {
-    background-color: #3498db;
+  background-color: #3498db;
 }
+/* Definiert den Container, der den Fortschrittsbalken enthält */
+.progress-container {
+  display: block;
+  margin-left: 10px;
+}
+/* Stile für die Anzeige von Notizen und Textbereichen für Notizen */
+.notes-display,
+.notes-textarea {
+  max-width: 250px;
+  min-width: 75px;
+  height: 50px;
 
-
-.notes-display, .notes-textarea  {
-   max-width: 250px;
-    min-width: 75px; /* adjust based on your needs */
-    height: 50px; /* adjust based on your needs */
-     /* ensures content doesn't spill out */
-    white-space: normal; /* ensures text wraps to the next line */
-    word-wrap: break-word; /* breaks the word if it's too long for the container */
-    overflow-y: scroll;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-y: scroll;
   overflow-x: scroll;
 }
 
 .table-responsive {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .table {
-    table-layout: fixed;
+  table-layout: fixed;
 }
 
+.deleteIcon:hover {
+  transform: scale(1.1);
+  filter: opacity(0.7) drop-shadow(0 0 0 red);
+}
+.deleteIcon-clicked {
+  filter: opacity(0.5) drop-shadow(0 0 0 red);
+}
 
+.table-hover tbody tr:hover {
+  background-color: blue;
+}
 
+.table-hover tbody tr.active-row {
+  background-color: blue;
+}
 
-
-  .deleteIcon:hover{
-    transform: scale(1.1);
-    filter: opacity(0.7) drop-shadow(0 0 0 red);
-  
-  }
-  .deleteIcon-clicked {
-  
-    filter: opacity(0.5) drop-shadow(0 0 0 red);
-  }
-
-  .table-hover tbody tr:hover {
-    background-color: blue;
-  }
-  
-  .table-hover tbody tr.active-row {
-    background-color: blue;
-  }
-
-  .active-row {
-    background-color:blue !important;
+.active-row {
+  background-color: blue !important;
 }
 
 table tbody tr.active-row {
@@ -74,4 +75,16 @@ table tbody tr.active-row {
 
 table.table tbody tr.active-row {
   background-color: blue !important;
+}
+
+.Pagnierungs-icons {
+  filter: opacity(0.7) drop-shadow(0 0 0 green);
+}
+.Paginierung-icons:hover {
+  transform: scale(1.1);
+  filter: opacity(1) drop-shadow(0 0 0 green);
+}
+.Paginierung-icons:active {
+  transform: scale(1.1);
+  filter: opacity(1) drop-shadow(0 0 0 green);
 }

@@ -7,9 +7,9 @@
     transform: scale(1.10); 
 }
 .active-icon  {
-    transform: scale(1.30); 
-    opacity: 1.0; 
-    background-color: #D1E7C3;
+    transform: scale(1.50); 
+    background-color: #FFF5E1;
+    
    
 }
 
@@ -17,6 +17,9 @@
     padding-bottom: 60px; 
 
 }
+.navbar.sticky-top {
+    z-index: 1030; 
+  }
 
 .navbar-container{
  background-color:#D1BFA3 !important

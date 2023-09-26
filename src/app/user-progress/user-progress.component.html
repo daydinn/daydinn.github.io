@@ -1,182 +1,284 @@
+<!-- Hauptcontainer für die Fortschritts- und Verfolgungsbereiche -->
 <div class="container-sm">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 text-center mb-5 ">
-            <div class="card">
-                <img [src]="levels['total'][getCurrentLevel(totalPoints, 'total')].img" class="card-img-top mx-auto d-block w-50" alt="Level Image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ levels['total'][getCurrentLevel(totalPoints, 'total')].label }}</h5>
-                    <p class="card-text">{{ levels['total'][getCurrentLevel(totalPoints, 'total')].description }}</p>
-                </div>
-            </div>
-
-            <div class="progress-container mt-3">
-                <span>{{ getLevelName('total', totalPoints) }} - Total Points: {{ totalPoints }}</span>
-                <div class="progress">
-                    <div class="progress-bar bg-warning" role="progressbar" [style.width]="calculateProgressValue(totalPoints, 'total') + '%'" aria-valuenow="calculateProgressValue(totalPoints, 'total')" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <hr>
+  <!-- Überschrift für den Fortschrittsbereich -->
+  <h1 class="mt-5 text-center">Progression & Tracking</h1>
+  <br />
+  <!-- Bereich für das Gesamtniveau des Benutzers -->
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 text-center mb-5">
+      <!-- Karte, die das aktuelle Level und dessen Beschreibung anzeigt-->
+      <div class="card">
+        <img
+          [src]="levels['total'][getCurrentLevel(totalPoints, 'total')].img"
+          class="card-img-top mx-auto d-block w-50"
+          alt="Level Image"
+        />
+        <div class="card-body">
+          <!-- Zeigt das aktuelle Level-Label an -->
+          <h4 class="card-title">
+            {{ levels["total"][getCurrentLevel(totalPoints, "total")].label }}
+          </h4>
+          <!-- Zeigt die Beschreibung des aktuellen Levels an -->
+          <p class="card-text">
+            {{
+              levels["total"][getCurrentLevel(totalPoints, "total")].description
+            }}
+          </p>
         </div>
-  
-
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 text-center mb-5">
-            <div class="progress-container">
-                <span>{{ getLevelName('green', greenPoints) }} - Mental Points: {{ greenPoints }}</span>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" [style.width]="calculateProgressValue(greenPoints, 'green') + '%'" aria-valuenow="calculateProgressValue(greenPoints, 'green')" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="progress-container">
-                <span>{{ getLevelName('red', redPoints) }} - Health Points: {{ redPoints }}</span>
-                <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" [style.width]="calculateProgressValue(redPoints, 'red') + '%'" aria-valuenow="calculateProgressValue(redPoints, 'red')" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div class="progress-container">
-                <span>{{ getLevelName('blue', bluePoints) }} - Productivity Points: {{ bluePoints }}</span>
-                <div class="progress">
-                    <div class="progress-bar bg-info" role="progressbar" [style.width]="calculateProgressValue(bluePoints, 'blue') + '%'" aria-valuenow="calculateProgressValue(bluePoints, 'blue')" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
+      </div>
+      <!-- Fortschrittsbalken für das Gesamtniveau -->
+      <div class="progress-container mt-3">
+        <span> Total Level </span>
+        <div class="progress">
+          <div
+            class="progress-bar bg-warning"
+            role="progressbar"
+            [style.width]="calculateProgressValue(totalPoints, 'total') + '%'"
+            aria-valuenow="calculateProgressValue(totalPoints, 'total')"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
         </div>
+      </div>
+      <hr />
     </div>
-
-</div><canvas baseChart
-[datasets]="lineChartData"
-[labels]="lineChartLabels"
-[options]="{ responsive: true }"
-chartType="line">
-</canvas>
-
-
-
+    <!-- Bereich für spezifische Level-Kategorien: Mental, Physical, Productivity -->
     <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12 text-center">
-            <h2 class="mt-5">Activity Tracking</h2>
-            <button class="btn btn-danger mt-2" (click)="deleteAllSavedActivities()">Delete all </button>
-            <div class="table-responsive mt-3">
-            <table class="table table-hover table-bordered  mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Date & Time</th>
-                        <th>Mood</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let savedMood of savedMoods; let i = index">
-                        <td>{{ savedMood.date }}</td>
-                        <td>
-                            <img [src]="savedMood.img" alt="Mood Image" class="img-fluid" width="40" height="40">                        </td>
-                        <td>
-                            <div class="notes-display" *ngIf="selectedMoodIndex !== i" (click)="editNotes(i)">
-                                {{ savedMood.notes || 'empty' }}
-                            </div>
-                            <textarea 
-                            *ngIf="selectedMoodIndex === i"
-                            [(ngModel)]="savedMood.notes"
-                            class="form-control notes-textarea"
-                            (blur)="saveNotes()"
-                            maxlength="150"></textarea>
-                        </td>
-                        <td>
-                            <img class="deleteIcon" src="./assets/delete32.png" alt="Delete" (click)="deleteMood(i); $event.stopPropagation();" style="cursor:pointer;">                        
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+      <div class="col-lg-6 col-md-8 mb-5">
+        <!-- Fortschrittsbalken für das mentale Level -->
+        <div class="progress-container">
+          <span>Mental Level: {{ getLevelName("green", greenPoints) }}</span>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              [style.width]="calculateProgressValue(greenPoints, 'green') + '%'"
+              aria-valuenow="calculateProgressValue(greenPoints, 'green')"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
         </div>
+        <!-- Fortschrittsbalken für das physische Level -->
+        <div class="progress-container">
+          <span>Physical Level: {{ getLevelName("red", redPoints) }}</span>
+          <div class="progress">
+            <div
+              class="progress-bar bg-danger"
+              role="progressbar"
+              [style.width]="calculateProgressValue(redPoints, 'red') + '%'"
+              aria-valuenow="calculateProgressValue(redPoints, 'red')"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
         </div>
+        <!-- Fortschrittsbalken für das Produktivitätslevel -->
+        <div class="progress-container">
+          <span
+            >Productivity Level: {{ getLevelName("blue", bluePoints) }}</span
+          >
+          <div class="progress">
+            <div
+              class="progress-bar bg-info"
+              role="progressbar"
+              [style.width]="calculateProgressValue(bluePoints, 'blue') + '%'"
+              aria-valuenow="calculateProgressValue(bluePoints, 'blue')"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <!-- Diagramm, das den Fortschritt über die Zeit darstellt -->
+  <canvas
+    baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="{ responsive: true }"
+    chartType="line"
+  >
+  </canvas>
+  <!-- Bereich für das Stimmungstracking des Benutzers -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-10 col-md-12 text-center">
+      <h1 class="mt-5">Mood Tracking</h1>
+      <!-- Tabelle, die gespeicherte Stimmungen des Benutzers anzeigt -->
+      <div class="table-responsive mt-3">
+        <table class="table table-hover table-bordered table-light mt-3">
+          <thead class="thead-dark">
+            <tr>
+              <th>Date & Time</th>
+              <th>Mood</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Zeigt jede gespeicherte Stimmung in einer Zeile an -->
 
+            <!-- Zeigt das Datum der Stimmung an -->
+            <tr
+              *ngFor="
+                let savedMood of savedMoods
+                  | slice
+                    : (currentPageMoods - 1) * itemsPerPage
+                    : currentPageMoods * itemsPerPage;
+                let i = index
+              "
+            >
+              <!-- Zeigt das Bild der Stimmung an -->
+              <td>{{ savedMood.date }}</td>
+              <td>
+                <img
+                  [src]="savedMood.img"
+                  alt="Mood Image"
+                  class="img-fluid"
+                  width="40"
+                  height="40"
+                />
+              </td>
+              <td>
+                <!-- Zeigt die Notizen zur Stimmung an. Wenn die Stimmung ausgewählt ist, wird ein Textfeld zum Bearbeiten angezeigt -->
+                <div
+                  class="notes-display"
+                  *ngIf="selectedMoodIndex !== i"
+                  (click)="editNotes(i)"
+                >
+                  {{ savedMood.notes || "empty" }}
+                </div>
+                <textarea
+                  *ngIf="selectedMoodIndex === i"
+                  [(ngModel)]="savedMood.notes"
+                  class="form-control notes-textarea"
+                  (blur)="saveNotes()"
+                  maxlength="150"
+                ></textarea>
+              </td>
+              <td>
+                <!-- Zeigt einen Button zum Löschen der Stimmung an -->
+                <img
+                  class="deleteIcon"
+                  src="./assets/delete32.png"
+                  alt="Delete"
+                  (click)="deleteMood(i); $event.stopPropagation()"
+                  style="cursor: pointer"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Button zur Navigation zur vorherigen Seite der Tabelle -->
+        <img
+          clas="Paginierung-icons"
+          src="./assets/previous24.png"
+          alt="Vorherige Seite"
+          (click)="decrementPageMoods()"
+          style="cursor: pointer"
+        />
+        <!-- Anzeige der aktuellen Seite -->
+        <span class="fw-bolder"> {{ currentPageMoods }} </span
+        ><!-- Button zur Navigation zur nächsten Seite der Tabelle -->
+        <img
+          src="./assets/next24.png"
+          alt="Nächste Seite"
+          (click)="incrementPageMoods()"
+          style="cursor: pointer"
+        />
+      </div>
 
-
-
-
-
-
-    <!---
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12 text-center">
-            <h2 class="mt-5">Moodtracking</h2>
-            <button class="btn btn-danger mt-2" (click)="deleteAllSavedMoods()">Alle gespeicherten Stimmungen löschen</button>
-            <div class="table-responsive mt-3">
-                <table class="table table-hover table-bordered table-striped mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Date & Time</th>
-                        <th>Mood</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let savedMood of savedMoods; let i = index">
-                        <td>{{ savedMood.date }}</td>
-                        <td>
-                            <img [src]="savedMood.img" alt="Mood Image" class="img-fluid" width="40" height="40">
-                        </td>
-                        <td>
-                            <div class="notes-display" *ngIf="selectedMoodIndex !== i" (click)="editNotes(i)">
-                                {{ savedMood.notes || 'No notes added' }}
-                            </div>
-                            <textarea 
-                                *ngIf="selectedMoodIndex === i"
-                                [(ngModel)]="savedMood.notes"
-                                class="form-control notes-textarea"
-                                (blur)="saveNotes()"
-                                maxlength="150"></textarea>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" (click)="deleteMood(i); $event.stopPropagation();">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
+      <button class="btn btn-danger mt-5" (click)="deleteAllSavedActivities()">
+        Delete all
+      </button>
     </div>
--->
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12 text-center">
-            <h2 class="mt-5">Activity Tracking</h2>
-            <button class="btn btn-danger mt-2" (click)="deleteAllSavedActivities()">Delete all </button>
-            <div class="table-responsive mt-3">
-            <table class="table table-hover table-bordered  mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Date & Time</th>
-                        <th>Activity</th>
-                        <th>Notes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let activity of hoveredActivities; let i = index">
-                        <td>{{ activity.date }}</td>
-                        <td>
-                            <img [src]="activity.img" alt="Activity Image" class="img-fluid" width="40" height="40">
-                        </td>
-                        <td>
-                            <div class="notes-display" *ngIf="selectedActivityIndex !== i" (click)="editActivityNotes(i)">
-                                {{ activity.notes || 'empty' }}
-                            </div>
-                            <textarea 
-                                *ngIf="selectedActivityIndex === i"
-                                [(ngModel)]="activity.notes"
-                                class="form-control notes-textarea"
-                                (blur)="saveActivityNotes()"
-                                maxlength="150"></textarea>
-                        </td>
-                        <td>
-                            <img class="deleteIcon" src="./assets/delete32.png" alt="Delete" (click)="deleteMood(i); $event.stopPropagation();" style="cursor:pointer;">                        
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
+  </div>
+  <!-- Beginn des Activity-Tracking Abschnitts -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-10 col-md-12 text-center">
+      <h2 class="mt-5">Activity Tracking</h2>
+      <div class="table-responsive mt-3">
+        <table class="table table-hover table-bordered mt-3">
+          <thead class="thead-dark">
+            <tr>
+              <th>Date & Time</th>
+              <th>Activity</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let activity of hoveredActivities
+                  | slice
+                    : (currentPageActivities - 1) * itemsPerPage
+                    : currentPageActivities * itemsPerPage;
+                let i = index
+              "
+            >
+              <td>{{ activity.date }}</td>
+              <td>
+                <img
+                  [src]="activity.img"
+                  alt="Activity Image"
+                  class="img-fluid"
+                  width="40"
+                  height="40"
+                />
+              </td>
+              <td>
+                <div
+                  class="notes-display"
+                  *ngIf="selectedActivityIndex !== i"
+                  (click)="editActivityNotes(i)"
+                >
+                  {{ activity.notes || "empty" }}
+                </div>
+                <textarea
+                  *ngIf="selectedActivityIndex === i"
+                  [(ngModel)]="activity.notes"
+                  class="form-control notes-textarea"
+                  (blur)="saveActivityNotes()"
+                  maxlength="150"
+                ></textarea>
+              </td>
+              <td>
+                <img
+                  class="deleteIcon"
+                  src="./assets/delete32.png"
+                  alt="Delete"
+                  (click)="deleteActivity(i); $event.stopPropagation()"
+                  style="cursor: pointer"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <img
+          src="./assets/previous24.png"
+          alt="Vorherige Seite"
+          (click)="decrementPageActivities()"
+          style="cursor: pointer"
+        />
+
+        <span class="fw-bolder"> {{ currentPageActivities }} </span>
+
+        <!-- Für das "Nächste Seite" Icon -->
+        <img
+          src="./assets/next24.png"
+          alt="Nächste Seite"
+          (click)="incrementPageActivities()"
+          style="cursor: pointer"
+        />
+      </div>
+      <button class="btn btn-danger mt-5" (click)="deleteAllSavedActivities()">
+        Delete all
+      </button>
     </div>
+  </div>
+  <br />
+  <br />
+  <br />
 </div>

@@ -17,7 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MeditationsexerciseComponent } from './meditationsexercise/meditationsexercise.component';
 import { StartpageComponent } from './startpage/startpage.component';
 import { NgChartsModule } from 'ng2-charts';
-
+import { SafeUrlPipe } from './safe-url.pipe';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { NgChartsModule } from 'ng2-charts';
     UserProgressComponent,
     MeditationsexerciseComponent,
     StartpageComponent,
+    SafeUrlPipe,
     
    
    

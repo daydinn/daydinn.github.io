@@ -1,138 +1,206 @@
+<html>
+  <!-- Überschrift für die Aktivitätsübersicht -->
+  <h1 class="mt-5 text-center">Activity Overview</h1>
 
-
-
-
-<div class="container-sm ">
-
-  <!-- Hidden checkboxes for showInfoPage, deleteMode,AddNewActivity -->
-  <div class="row mt-3">
-
-    <input type="checkbox" [(ngModel)]="showInfoPage" class="hidden-checkbox" id="infoCheckbox">
-
-    <input type="checkbox" [(ngModel)]="deleteMode" class="hidden-checkbox" id="deleteCheckbox">
-    
-    <input type="checkbox" [(ngModel)]="showAddNewActivity" class="hidden-checkbox" id="addActivityCheckbox">
-
-    
-    
-    
-
-
-
-
-
-
-
-</div>
-
-<div class="container-fluid-sm d-flex flex-row-reverse ">
- 
-
-  <img  class="justify-content-start d-flex   "src="/assets/reload32.png" alt="Unhover Icon" class="unhover-icon" (click)="unhoverAllActivities()">
-
-
- 
- <!-- Icon, das die Checkbox steuert -->
- <label class="checkbox-label d-flex justify-content-end me-5 ms-3 " for="deleteCheckbox">
-  <span class="checkbox-custom">
-    <img src="/assets/delete32.png" alt="Custom Icon" [ngClass]="{'deleteCheckbox-clicked': isKlickedDelete}" (click)="toggleClassDelete()" class="deleteCheckboxIcon"> 
-  </span>
-</label>
- 
-  <!-- Icon, das die Checkbox steuert -->
- <label class="checkbox-label d-flex justify-content-end ms-3  " for="infoCheckbox">
-  <span class="checkbox-custom">
-    <img src="/assets/info32.png" alt="Custom Icon" [ngClass]="{'infoCheckbox-clicked': isKlickedInfo}" (click)="toggleClassInfo()" class="infoCheckboxIcon"> 
-  </span>
-  </label>
-
-
-  
-
-<!-- Icon, das die Checkbox steuert -->
-<label class="checkbox-label d-flex justify-content-end ms-4" for="addActivityCheckbox">
-  <span class="checkbox-custom">
-    <img src="/assets/add32.png" alt="Custom Icon" [ngClass]="{'addCheckbox-clicked': isKlickedAdd}" (click)="toggleClassAddNewActivity()" class="addCheckboxIcon"> 
-  </span>
-</label>
-
-
-</div>
-
-  <!-- Scroll-Container für Aktivitäten -->
-  <div class="scroll-container text-center">
-    <!-- Input form for the new activity -->
-
-      
-    <div class="activity-form  container-fluid p-4 rounded shadow-sm bg-white" *ngIf="showAddNewActivity">
-      <div class="form-group">
-        <input class="form-control" [(ngModel)]="newActivity.label" type="text" placeholder="Label">
-      </div>
-    
-      <div class="form-group">
-        <textarea class="form-control" [(ngModel)]="newActivity.description" placeholder="Description"></textarea>
-      </div>
-    
-      <div class="form-group">
-        <select class="form-control" [(ngModel)]="newActivity.color">
-          <option value="green">Mental</option>
-          <option value="blue">Physical</option>
-          <option value="red">Productive</option>
-        </select>
-      </div>
-    
-      <div class="form-group">
-        <input class="form-control" [(ngModel)]="newActivity.points" type="number" placeholder="0 points">
-      </div>
-    
-      <button class="btn btn-success" (click)="saveActivity()">Create Activity</button>
-    </div>
-    
-    <div class="row">
-      
-      
-      
-
-      <div class="col-3" *ngFor="let activity of activitys " (click)="deleteActivity(activity)" >
-        
-        <div class="activity-card">
-          <div class="activity" (click)="toggleHover(activity)"  >
-            <img [src]="activity.isHovered ? activity.hoveredImg : activity.img" alt="{{ activity.label }}" class="img-fluid activity-image mt-2" [class.hovered]="activity.isHovered"
-            [style.border]="activity.isHovered ? '4px solid gold' : getBorderStyle(activity.color)"
-                (click)="showActivityInfo(activity)" (click)="deleteActivity(activity)">
-        </div>
-        
-
-
-        </div>
-      </div>
-    </div>
-    
-  </div>
-
-
-
-  <!-- Großes Fenster für Aktivitätsinformationen -->
-  <div class="container-sm text-center">
+  <div class="container-sm">
+    <!-- Versteckte Checkboxen für verschiedene Modi und Aktionen -->
     <div class="row mt-3">
-      <div class="big-window" *ngIf="showInfoWindow && showInfoPage">
-        <div class="close-bigwindow-icon" (click)="closeActivityInfo()">
-          <img src="/assets/close24.png" alt="Close Icon" class="noborder">
+      <!-- Checkbox für den Informationsmodus -->
+      <input
+        type="checkbox"
+        [(ngModel)]="showInfoPage"
+        class="hidden-checkbox"
+        id="infoCheckbox"
+      />
+      <!-- Checkbox für den Löschmodus -->
+      <input
+        type="checkbox"
+        [(ngModel)]="deleteMode"
+        class="hidden-checkbox"
+        id="deleteCheckbox"
+      />
+      <!-- Checkbox um neue Aktivität hinzuzufügen -->
+      <input
+        type="checkbox"
+        [(ngModel)]="showAddNewActivity"
+        class="hidden-checkbox"
+        id="addActivityCheckbox"
+      />
+    </div>
+    <!-- Icons und deren Checkboxen-Steuerung -->
+    <div class="container-fluid-sm d-flex flex-row-reverse">
+      <img
+        class="justify-content-start d-flex"
+        src="/assets/reload32.png"
+        alt="Unhover Icon"
+        class="unhover-icon"
+        (click)="unhoverAllActivities()"
+      />
+
+      <!-- Icon um Löschmodus zu aktivieren/deaktivieren -->
+      <label
+        class="checkbox-label d-flex justify-content-end me-5 ms-3"
+        for="deleteCheckbox"
+      >
+        <span class="checkbox-custom">
+          <img
+            src="/assets/delete32.png"
+            alt="Custom Icon"
+            [ngClass]="{ 'deleteCheckbox-clicked': isKlickedDelete }"
+            (click)="toggleClassDelete()"
+            class="deleteCheckboxIcon"
+          />
+        </span>
+      </label>
+
+      <!-- Icon um Informationsmodus zu aktivieren/deaktivieren -->
+      <label
+        class="checkbox-label d-flex justify-content-end ms-3"
+        for="infoCheckbox"
+      >
+        <span class="checkbox-custom">
+          <img
+            src="/assets/info32.png"
+            alt="Custom Icon"
+            [ngClass]="{ 'infoCheckbox-clicked': isKlickedInfo }"
+            (click)="toggleClassInfo()"
+            class="infoCheckboxIcon"
+          />
+        </span>
+      </label>
+
+      <!-- Icon um das Hinzufügen neuer Aktivität zu aktivieren/deaktivieren -->
+      <label
+        class="checkbox-label d-flex justify-content-end ms-4"
+        for="addActivityCheckbox"
+      >
+        <span class="checkbox-custom">
+          <img
+            src="/assets/add32.png"
+            alt="Custom Icon"
+            [ngClass]="{ 'addCheckbox-clicked': isKlickedAdd }"
+            (click)="toggleClassAddNewActivity()"
+            class="addCheckboxIcon"
+          />
+        </span>
+      </label>
+    </div>
+
+    <!-- Bereich für die Darstellung und Hinzufügung von Aktivitäten -->
+
+    <div class="scroll-container text-center">
+      <!-- Formular um neue Aktivität hinzuzufügen -->
+
+      <div
+        class="activity-form container-fluid p-4 rounded shadow-sm activity-content-background"
+        *ngIf="showAddNewActivity"
+      >
+        <!-- Eingabefeld für den Namen der Aktivität -->
+        <div class="form-group">
+          <input
+            class="form-control"
+            [(ngModel)]="newActivity.label"
+            type="text"
+            placeholder="Label"
+          />
         </div>
-        <!-- <button class="btn btn-link close-button" (click)="closeActivityInfo()">Close</button> -->
-        <div class="activity-info-container">
-          <img [src]="selectedActivity.img" alt="{{ selectedActivity.label }}" class="img-fluid" [style.border]="getBorderStyle(selectedActivity.color)">
-          <h5 style="font-size: 80%;">{{ selectedActivity.label }}</h5>
-          <p style="font-size: 100%;">
-            {{ selectedActivity.points }}
-            <img class="noborder" src="/assets/star.png" alt="Italian Trulli">
-          </p>
-          <p style="font-size: 80%;"> {{ selectedActivity.description }}</p>
+        <!-- Textbereich für die Beschreibung der Aktivität -->
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            [(ngModel)]="newActivity.description"
+            placeholder="Description"
+          ></textarea>
         </div>
-        
+        <!-- Dropdown-Menü für die Farbe der Aktivität -->
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="newActivity.color">
+            <option value="green">Mental</option>
+            <option value="blue">Physical</option>
+            <option value="red">Productive</option>
+          </select>
+        </div>
+        <!-- Eingabefeld für die Punkte der Aktivität -->
+        <div class="form-group">
+          <input
+            class="form-control"
+            [(ngModel)]="newActivity.points"
+            type="number"
+            placeholder="0 points"
+            [max]="maxActivityPoints"
+            [min]="minActivityPoints"
+          />
+        </div>
+        <!-- Button zum Speichern der neuen Aktivität -->
+        <button class="btn btn-success" (click)="saveActivity()">
+          Create Activity
+        </button>
+      </div>
+      <!-- Darstellung der vorhandenen Aktivitäten -->
+      <div class="row">
+        <div
+          class="col-3"
+          *ngFor="let activity of activitys"
+          (click)="deleteActivity(activity)"
+        >
+          <!-- Karte einer einzelnen Aktivität -->
+          <div class="activity-card">
+            <!-- Bereich der Aktivität mit Hover-Funktionalität -->
+            <div class="activity" (click)="toggleHover(activity)">
+              <!-- Bild der Aktivität mit Hover-Verhalten -->
+              <img
+                [src]="activity.isHovered ? activity.hoveredImg : activity.img"
+                alt="{{ activity.label }}"
+                class="img-fluid activity-image mt-2"
+                [class.hovered]="activity.isHovered"
+                [style.border]="
+                  activity.isHovered
+                    ? '4px solid gold'
+                    : getBorderStyle(activity.color)
+                "
+                (click)="showActivityInfo(activity)"
+                (click)="deleteActivity(activity)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Großer Informationsbereich für Aktivitäten -->
+    <div style="" class="container-sm text-center">
+      <!-- Zeilen-Layout -->
+      <div class="row mt-3">
+        <!-- Großes Informationsfenster einer Aktivität -->
+        <div class="big-window" *ngIf="showInfoWindow && showInfoPage">
+          <!-- Icon um das Informationsfenster zu schließen -->
+          <div class="close-bigwindow-icon" (click)="closeActivityInfo()">
+            <img src="/assets/close24.png" alt="Close Icon" class="noborder" />
+          </div>
+          <!-- Informationsbereich der Aktivität -->
+          <div class="activity-info-container">
+            <!-- Bild der Aktivität -->
+            <img
+              [src]="selectedActivity.img"
+              alt="{{ selectedActivity.label }}"
+              class="img-fluid"
+              [style.border]="getBorderStyle(selectedActivity.color)"
+            />
+            <h5 style="font-size: 80%">{{ selectedActivity.label }}</h5>
+            <p style="font-size: 100%">
+              {{ selectedActivity.points }}
+              <img
+                class="noborder"
+                src="/assets/star.png"
+                alt="Italian Trulli"
+              />
+            </p>
+            <p style="font-size: 80%">{{ selectedActivity.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<app-scores></app-scores>
+  <app-scores></app-scores>
+</html>

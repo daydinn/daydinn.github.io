@@ -1,14 +1,177 @@
+
+/* Grundlegende Styles für HTML und Body */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* verhindert horizontales Scrollen */
+}
+
 .small-mobile {
-    font-size: inherit;
+  font-size: inherit;
 }
 
-/* Für Geräte mit einer maximalen Bildschirmbreite von 768px */
+/* Media Query für Geräte mit einer maximalen Bildschirmbreite von 768px */
 @media (max-width: 768px) {
-    .small-mobile {
-        font-size: 0.875rem; /* Dies ist die Größe von Bootstrap's .small */
-    }
+  .small-mobile {
+    font-size: 0.875rem; /* Dies ist die Größe von Bootstrap's .small */
+  }
 }
 
-body{
-    background:    blue !important;
-    }
+/* Stil für den Begrüßungscontainer */
+.greeting-container {
+  margin: 5px;
+  display: flex;
+  align-items: center; /* Zentriert die Elemente vertikal*/
+}
+/* Stil für das Begrüßungsicon */
+.greeting-container img {
+  width: 40px;
+  height: auto; /* Behält das Seitenverhältnis des Bildes bei */
+}
+/* Stil für den Begrüßungstext */
+.greeting-container h1 {
+  margin-top: 10px;
+  margin-right: 5px; /* Ein wenig Abstand zwischen Text und Icon */
+}
+/* Grundlegende Stildefinitionen für den Modal-Hintergrund */
+.modal-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.2s ease-in-out;
+}
+/* Modal wird sichtbar, wenn es die Klasse "open" hat */
+.modal-background.open {
+  opacity: 1;
+  visibility: visible;
+}
+/* Stildefinitionen für den Inhalt des Modals */
+.modal-content {
+  background-image: url("https://images.unsplash.com/photo-1503891617560-5b8c2e28cbf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80");
+  background-size: cover; /* adjust the image to cover the entire element */
+  background-repeat: no-repeat; /* ensure the image doesn't repeat */
+  background-position: center;
+  position: relative;
+  max-width: 80vw;
+  width: 600px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  transition: opacity 3.5s ease-in-out;
+}
+/* Stildefinitionen für das Schließen-Icon im Modal */
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none; /* Entfernt den Fokus-Umriss, der in manchen Browsern angezeigt wird */
+}
+
+/* Stildefinitionen für das Schließen-Icon im Modal */
+.close-icon img {
+  display: block;
+}
+/* Stildefinitionen für Informationskarten */
+.info-card {
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  padding: 35px; 
+  color: white; 
+  border-radius: 10px; 
+  background-color: rgba(0, 0, 0, 0.3); 
+  margin: 5px auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+/* Stil für eingebettete iframes innerhalb der Informationskarte */
+.info-card iframe {
+  border: none;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  background: #000;
+  border: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Überschrift und Absatz innerhalb der Informationskarte */
+.info-card h2 {
+  color: #4a90e2;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #333;
+  font-size: 1rem;
+}
+
+/* Anpassungen für Informationskarten auf kleinen Bildschirmen */
+@media (max-width: 480px) {
+  .info-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .info-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+  }
+}
+
+.clickable-icon {
+  cursor: pointer;
+  filter: opacity(0.7) drop-shadow(0 0 0 green);
+}
+.clickable-icon:hover {
+  transform: scale(1.1);
+  filter: opacity(1.1) drop-shadow(0 0 0 green);
+}
+
+.activity-image:active {
+  transform: scale(1.1);
+}
+
+.home-card {
+  width: 7rem;
+  height: 8rem;
+}
+
+/* Stil für mittlere bis große Bildschirme */
+@media (min-width: 768px) {
+  
+  .home-card {
+    width: 15rem;
+    height: 11rem;
+  }
+}

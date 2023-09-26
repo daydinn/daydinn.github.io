@@ -1,39 +1,48 @@
+<div
+  class="container-sm text-center maincontainer"
+  style="
+    position: fixed;
 
-<div class="container-sm text-center ">
-    <div class="row mb-4">
-      <div class="col-4">
-        
-        <div class="icon-text-container center-score">
-          <span style="color:green; font-weight: bold; font-size: 125%;">{{greenPoints}}</span>
-            <img src="/assets/brain24.png" alt="Custom Icon" title="https://www.flaticon.com">
-            
-          </div>
-          
-    
-    </div>
-  
-      <div class="col-4">
-
-        <div class="icon-text-container center-score">
-          <span style="color:red; font-weight: bold;" >{{redPoints}}</span>
-            <img src="/assets/hearth.svg" alt="Custom Icon" title="https://www.flaticon.com">
-            
-          </div>
-       
+    left: 50%;
+    transform: translateX(-50%); /* Zentriert das Element horizontal */
+    width: 100%; /* Oder die gewünschte Breite */
+    /* Je nach Bedarf anpassen */
+    z-index: 500;
+  "
+>
+  <div class="row">
+    <div class="col-4">
+      <div class="icon-text-container center-score">
+        <span style="color: green; font-weight: bold; font-size: 125%">{{
+          greenPoints
+        }}</span>
+        <img
+          src="/assets/brain24.png"
+          alt="Custom Icon"
+          title="https://www.flaticon.com"
+        />
       </div>
-      <div class="col-4">
+    </div>
 
-        <div class="icon-text-container center-score">
-             <span style="color:blue; font-weight: bold;">{{bluePoints}}</span>
-             <img src="/assets/light.svg" alt="Custom Icon" title="https://www.flaticon.com">
-
-            
-            
-          </div>
-        
+    <div class="col-4">
+      <div class="icon-text-container center-score">
+        <span style="color: red; font-weight: bold">{{ redPoints }}</span>
+        <img
+          src="/assets/hearth.svg"
+          alt="Custom Icon"
+          title="https://www.flaticon.com"
+        />
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="icon-text-container center-score">
+        <span style="color: blue; font-weight: bold">{{ bluePoints }}</span>
+        <img
+          src="/assets/light.svg"
+          alt="Custom Icon"
+          title="https://www.flaticon.com"
+        />
       </div>
     </div>
   </div>
-  
-  
-  
+</div>

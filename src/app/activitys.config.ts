@@ -5,13 +5,14 @@ import { Activity } from './activityInterface';
 // activitys.config.ts
 
 
-
+export const ACTIVITYS_VERSION = 2; // need to be incremented every time when activitys are changed
 export const ACTIVITYS: Activity[] = [
     { label: "Guitar", description: "Expressing emotions and creating melodies through the strings", img: "/assets/guitar32.png", hoveredImg: "/assets/guitar32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
     { label: "E-mails", description: "Communicating and staying connected digitally", img: "/assets/email32.png", hoveredImg: "/assets/email32hovered.png", color: "blue", points: 1, isHovered: false, isNewActivity: false },
     { label: "Running", description: "Active exercise for cardiovascular health", img: "/assets/running32.png", hoveredImg: "/assets/running32hovered.png", color: "red", points: 1, isHovered: false, isNewActivity: false },
     { label: "Cleaning", description: "Tidying up and maintaining a neat environment", img: "/assets/cleaning32.png", hoveredImg: "/assets/cleaning32hovered.png", color: "blue", points: 1, isHovered: false, isNewActivity: false },
     { label: "Coding", description: "Building and troubleshooting software", img: "/assets/coding32.png", hoveredImg: "/assets/coding32hovered.png", color: "blue", points: 1, isHovered: false, isNewActivity: false },
+    { label: "Listening to Music", description: "Relaxing the mind with melodies and rhythms", img: "/assets/music32.png", hoveredImg: "/assets/music32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
     { label: "Working", description: "Engaging in professional or personal tasks", img: "/assets/working32.png", hoveredImg: "/assets/working32hovered.png", color: "blue", points: 1, isHovered: false, isNewActivity: false },
     { label: "Reading", description: "Diving into stories, acquiring knowledge, and expanding horizons", img: "/assets/reading32.png", hoveredImg: "/assets/reading32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
     { label: "Lifting", description: "Strength training and muscle building", img: "/assets/lifting32.png", hoveredImg: "/assets/lifting32hovered.png", color: "red", points: 1, isHovered: false, isNewActivity: false },
@@ -23,5 +24,9 @@ export const ACTIVITYS: Activity[] = [
     { label: "Journaling", description: "Expressing oneself through written words", img: "/assets/journaling32.png", hoveredImg: "/assets/journaling32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
     { label: "Meditating", description: "Seeking inner peace and mindfulness", img: "/assets/meditating32.png", hoveredImg: "/assets/meditating32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
     { label: "Detoxing2", description: "Cleansing body and mind from toxins", img: "/assets/detox32.png", hoveredImg: "/assets/detox32hovered.png", color: "red", points: 1, isHovered: false, isNewActivity: false },
-
+    { label: "Photography", description: "Capturing moments and scenes", img: "/assets/camera32.png", hoveredImg: "/assets/camera32hovered.png", color: "blue", points: 1, isHovered: false, isNewActivity: false },
+    {label: "Cycling", description: "Riding a bike for cardiovascular health", img: "/assets/cycling32.png", hoveredImg: "/assets/cycling32hovered.png", color: "red", points: 1, isHovered: false, isNewActivity: false },
+    { label: "Gardening", description: "Planting and tending to flowers, fruits, and vegetables", img: "/assets/gardening32.png", hoveredImg: "/assets/gardening32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
+    { label: "Dancing", description: "Expressing oneself through movement", img: "/assets/dancing32.png", hoveredImg: "/assets/dancing32hovered.png", color: "red", points: 1, isHovered: false, isNewActivity: false },
+    {label: "Yoga", description: "Balancing mind and body with poses and breathing", img: "/assets/yoga32.png", hoveredImg: "/assets/yoga32hovered.png", color: "green", points: 1, isHovered: false, isNewActivity: false },
 ];

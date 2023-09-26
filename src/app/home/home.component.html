@@ -1,16 +1,71 @@
 
+<html>
 
+  
+<!-- Hauptcontainer -->
+<div class="container-sm  ">
+   <!-- Begrüßungsabschnitt -->
+  <div class="greeting-container mt-2 ">
+    <h1>{{ greeting }}</h1>
+    <img [src]="iconPath" alt="Greeting Icon">
+  </div>
+  
+   <!-- Reihe für Informationskarten -->
+   <div class="row">
+    <div class="col-lg-4 col-6 mt-1">
+ 
+<div class="info-card " [style.background-image]="'url(' + selectedImageUrl + ')'">
+  <h3 >{{selectedContent.title}}</h3>
+    <p>{{selectedContent.message}}</p>
+     <!-- Klickbares Play-Icon, öffnet die Atemmeditation -->
+    <img src="assets/play32.png" alt="Play Icon" (click)="openModal()" class="clickable-icon"/>  </div>
+  </div>
+    <!-- Rechte Informationskarte (mit eingebettetem Youtube Video) -->
+  <div class="col-lg-4 col-6 mt-1">
+   
+   <div class="info-card">
+    <div style="height:50px; z-index:  1000;"><p style=>Daily practices</p></div>
+    <!-- Eingebettetes Youtube Video --->
+    <iframe [src]="selectedVideoUrl | safeUrl" width="100%" height="250px" 
+         
+          frameborder="0" seamless="seamless"  style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"
+          
+          allowfullscreen="true">
+  </iframe>
+     
+         </div>
+     </div>
+  </div>
+</div>
+
+
+
+<!-- Meditations-Modal-Struktur -->
+<div class="modal-background" 
+     [ngStyle]="{ 'visibility': isModalOpen ? 'visible' : 'hidden', 'opacity': isModalOpen ? '1' : '0', 'backgroundColor': isModalOpen ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0)' }">
+    <!-- Modal-Inhalt -->
+
+    <div class="modal-content">
+      <button class="close-icon" (click)="closeModal()">
+         <!-- Schließen-Button für das Modal -->
+        <img src="assets/close24.png" alt="Schließen Icon">
+    </button>
+        <app-meditationsexercise></app-meditationsexercise>
+        
+    </div>
+</div>
+
+
+<!-- Todo-Liste Komponente -->
 <app-todo-list></app-todo-list>
-<br>
-<br>
-<br>
+
+<!-- Scores-bereich -->
 
 
-
-
-<div class="container-fluid d-flex flex-wrap">
+<div class="container-fluid d-flex flex-wrap margin-top-custom    ">
+  <!-- Mentale-Punktekarte -->
   <div class="col-sm-4 flex-grow-1">
-    <div class="card text-white bg-success text-center mx-auto" style="max-width: 15rem;">
+    <div class="card text-white bg-success text-center mx-auto home-card">
       <div class="card-header">Mental</div>
       <div class="card-body">
         <img src="assets/brain32.png" alt="brain-icon" title="https://www.flaticon.com" />
@@ -18,18 +73,20 @@
       </div>
     </div>
   </div>
+   <!-- Physische-Punktekarte -->
   <div class="col-sm-4 flex-grow-1">
-    <div class="card text-white bg-danger text-center mx-auto" style="max-width: 15rem;">
-      <div class="card-header">Physical</div>
+    <div class="card text-white bg-danger text-center mx-auto home-card">
+      <div style="font-size:80%" class="card-header">Physical</div>
       <div class="card-body">
         <img src="assets/hearth32.png" alt="heart-icon" title="https://www.flaticon.com" />
         <h5 class="card-title">{{redPoints}}</h5>
       </div>
     </div>
   </div>
+  <!-- Produktivitäts-Punktekarte -->
   <div class="col-sm-4 flex-grow-1">
-    <div class="card text-white bg-info text-center mx-auto" style="max-width: 15rem;">
-      <div class="card-header">Productivity</div>
+    <div class="card text-white bg-info text-center mx-auto home-card">
+      <div style="font-size:80%" class="card-header">Productivity</div>
       <div class="card-body">
         <img src="assets/light32.png" alt="bulb-icon" title="https://www.flaticon.com" />
         <h5 class="card-title">{{bluePoints}}</h5>
@@ -37,9 +94,15 @@
     </div>
   </div>
 </div>
+<br>
 
 
 
 
 
 
+
+
+
+
+</html>
