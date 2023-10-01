@@ -12,18 +12,18 @@ body {
 .breathing-circle {
   width: 250px;
   height: 250px;
-  margin: auto;  /* Zentriert den Kreis */
+  margin: auto; /* Zentriert den Kreis */
   margin-top: 30px;
   text-align: center;
-  border: 5px solid #3498db;  /* Kreis-Randfarbe */
-  border-radius: 50%;          /* Erzeugt einen Kreis */
+  border: 5px solid #3498db; /* Kreis-Randfarbe */
+  border-radius: 50%; /* Erzeugt einen Kreis */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
-   /* Animation und Übergänge */
+  /* Animation und Übergänge */
   transition: all 4s ease-in-out;
-  transition: transform 4s ease-in-out;  /* Sanfter Übergang der Transformation */
+  transition: transform 4s ease-in-out; /* Sanfter Übergang der Transformation */
   position: relative;
 }
 
@@ -32,24 +32,10 @@ body {
   font-size: 2em;
   color: #3498db;
 }
+
 /* Animation für die "inhale"-Phase */
 .expanding {
-  animation: breatheIn 4s forwards;  /* Verweist auf die "breatheIn"-Animation */
-}
-
-@keyframes breatheIn {
-    /* Start der Animation */
-  0% {
-    transform: scale(1);   /* Ursprüngliche Größe */
-  }
-  50% {
-    transform: scale(1.2);  /* Vergrößert auf 120% */
-    border-color: #e74c3c;
-  }
-  100% {
-    transform: scale(1.2);
-    border-color: #e74c3c;
-  }
+  animation: breatheIn 4s forwards; /* Verweist auf die "breatheIn"-Animation */
 }
 /* Stil für die "hold"-Phase */
 .holding {
@@ -61,15 +47,15 @@ body {
   animation: breatheOut 4s forwards; /* Verweist auf die "breatheOut"-Animation */
 }
 
-@keyframes breatheOut {
-  0% {
-    transform: scale(1.2);
-    border-color: #e74c3c;
-  }
-  100% {
-    transform: scale(1);
-    border-color: #3498db;
-  }
+.timer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 1.5em;
 }
 
 /* Gemeinsame Stile für Start- und Stopp-Buttons */
@@ -112,13 +98,28 @@ body {
   box-shadow: none;
 }
 
-.timer {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 1.5em;
+@keyframes breatheIn {
+  /* Start der Animation */
+  0% {
+    transform: scale(1); /* Ursprüngliche Größe */
+  }
+  50% {
+    transform: scale(1.2); /* Vergrößert auf 120% */
+    border-color: #e74c3c;
+  }
+  100% {
+    transform: scale(1.2);
+    border-color: #e74c3c;
+  }
+}
+
+@keyframes breatheOut {
+  0% {
+    transform: scale(1.2);
+    border-color: #e74c3c;
+  }
+  100% {
+    transform: scale(1);
+    border-color: #3498db;
+  }
 }

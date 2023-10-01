@@ -3,8 +3,8 @@ html,
 body {
   height: 100%; /* Setzt die Höhe auf die gesamte Bildschirmhöhe */
   margin: 0;
-  padding: 0; /* Entfernt jeglichen Abstand */
-  overflow-x: hidden; /* Verhindert das horizontale Scrollen der Seite */
+  padding: 0;
+  overflow-x: hidden;
 }
 /* Zusätzliche Stilvorgaben nur für den Body */
 body {
@@ -18,8 +18,8 @@ body {
 }
 /* Hover-Effekte für die Stimmungsbilder */
 .mood-image:hover {
-  transform: scale(1.1); /* Vergrößert das Bild ein wenig */
-  filter: opacity(0.7) drop-shadow(0 0 0 white); /* Ändert die Opazität und fügt einen Schlagschatten hinzu */
+  transform: scale(1.1);
+  filter: opacity(0.7) drop-shadow(0 0 0 white);
 }
 
 .mood-image:active {
@@ -29,20 +29,20 @@ body {
 /* Stil für ausgewählte Stimmungsbilder */
 .selected-mood {
   border: 8px solid gold !important; /* Ändert die Randfarbe der ausgewählten Stimmungsbilder */
-  border-radius: 50px !important; /* Stellt sicher, dass die Ecken gerundet bleiben */
+  border-radius: 50px !important;
 }
 /* Container für die Vorschläge basierend auf der ausgewählten Stimmung */
 .suggestions-container {
   margin-top: 10px;
   position: absolute;
-  top: 65%; // Dies zentriert den Overlay vertikal
-  left: 50%; // Dies zentriert den Overlay horizontal
-  transform: translate(-50%, -50%); // Dies gewährleistet die Zentrierung
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%); //  sorgt für die Zentrierung
 
   padding: 1em;
   border-radius: 8px;
-  z-index: 10; // Dies stellt sicher, dass der Overlay über anderen Elementen liegt
-  max-width: 90%; // Dies stellt sicher, dass der Overlay responsiv bleibt
+  z-index: 10;
+  max-width: 90%;
 }
 /* Styling des Tipps-Containers, der Vorschläge und das Tipp-Icon anzeigt */
 .tip-container {

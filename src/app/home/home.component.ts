@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ScoresService } from '../scores.service';
-import { Subscription } from 'rxjs';
-import { imageUrls, videoUrls, content } from './config';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ScoresService } from "../services/scores.service";
+import { Subscription } from "rxjs";
+import { imageUrls, videoUrls, content } from "./homepage-config";
 
 // Dekoriert die Klasse als Angular-Komponente
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   // Initialisiert die Variablen mit Inhalten aus der Konfigurationsdatei
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   redPoints: number = 0;
   bluePoints: number = 0;
 
-  // Ein Array zum Speichern der Abonnements, um sicherzustellen, dass wir uns später davon abmelden können
+  // Ein Array zum Speichern der Abonnements,
   private subs: Subscription[] = [];
 
   // // Dependency Injection: Zugriff auf den ScoresService um die Punktenzustände zu verfolgen
@@ -43,24 +43,18 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // // Abonniere die Punktzahlen für verschiedene Farben
     this.subs.push(
-      this.scoresService.watchScore('green').subscribe((score) => {
+      this.scoresService.watchScore("green").subscribe((score) => {
         this.greenPoints = score;
       }),
-      // Das Gleiche tun für Rot...
-      this.scoresService.watchScore('red').subscribe((score) => {
+      // Das Gleiche für Rot
+      this.scoresService.watchScore("red").subscribe((score) => {
         this.redPoints = score;
       }),
-      // ... und Blau.
-      this.scoresService.watchScore('blue').subscribe((score) => {
+      // und Blau...
+      this.scoresService.watchScore("blue").subscribe((score) => {
         this.bluePoints = score;
       })
     );
-  }
-
-  // Wird aufgerufen, wenn die Komponente zerstört wird
-  ngOnDestroy() {
-    //Alle Abonnements kündigen
-    this.subs.forEach((sub) => sub.unsubscribe());
   }
 
   // Setzt den Begrüßungstext und das zugehörige Icon basierend auf der aktuellen Uhrzeit
@@ -68,18 +62,27 @@ export class HomeComponent implements OnInit, OnDestroy {
     const hour = new Date().getHours();
 
     if (hour >= 5 && hour < 12) {
-      this.greeting = 'Good Morning';
-      this.iconPath = 'assets/morning32.png';
+      this.greeting = "Good Morning";
+      this.iconPath = "assets/morning32.png"; //Icon: "Good Morning" von Flat Icons, Lizenzgeber: Flaticon, Lizenznehmer: user92498310, Verfügbar unter: https://www.flaticon.com/free-icon/good-morning_5776495
     } else if (hour >= 12 && hour < 17) {
-      this.greeting = 'Good Afternoon';
-      this.iconPath = 'assets/afternoon32.png';
+      this.greeting = "Good Afternoon";
+      this.iconPath = "assets/afternoon32.png"; //Icon: "Afternoon" von Flat Icons, Lizenzgeber: Flaticon, Lizenznehmer: user92498310, Verfügbar unter: https://www.flaticon.com/free-icon/afternoon_5776057
     } else if (hour >= 17 && hour < 21) {
-      this.greeting = 'Good Evening';
-      this.iconPath = 'assets/evening32.png';
+      this.greeting = "Good Evening";
+      this.iconPath = "assets/evening32.png"; //Icon: "Evening" von Flat Icons, Lizenzgeber: Flaticon, Lizenznehmer: user92498310, Verfügbar unter: https://www.flaticon.com/free-icon/evening_5776405
     } else {
-      this.greeting = 'Good Night';
-      this.iconPath = 'assets/night32.png';
+      this.greeting = "Good Night";
+      this.iconPath = "assets/night32.png"; //Icon: "Midnight" von Flat Icons, Lizenzgeber: Flaticon, Lizenznehmer: user92498310, Verfügbar unter: https://www.flaticon.com/free-icon/midnight_5776601
     }
+  }
+
+  // Funktion zum Öffnen der Meditation
+  openModal() {
+    this.isModalOpen = true;
+  }
+  // Funktion zum Schließen der Meditation
+  closeModal() {
+    this.isModalOpen = false;
   }
   // Wählt einen zufälligen Inhalt für die Meditationskarte aus
   getRandomContent(): { title: string; message: string } {
@@ -96,12 +99,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     const randomIndex = Math.floor(Math.random() * this.videoUrls.length);
     this.selectedVideoUrl = this.videoUrls[randomIndex];
   }
-  // Funktion zum Öffnen der Meditation
-  openModal() {
-    this.isModalOpen = true;
-  }
-  // Funktion zum Schließen der Meditation
-  closeModal() {
-    this.isModalOpen = false;
+
+  // Wird aufgerufen, wenn die Komponente zerstört wird
+  ngOnDestroy() {
+    //Alle Abonnements kündigen
+    this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

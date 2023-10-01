@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root', // Stellt sicher, dass der Service global in der gesamten App verfügbar ist.
+  providedIn: "root", // Stellt sicher, dass der Service global in der gesamten App verfügbar ist.
 })
 export class ScoresService {
-  // Initialisieren der Scores mit einem Objekt für jede Farbkategorie.
+  // Initialisiert die  Scores mit einem Objekt für jede Farbkategorie.
   private scores: {
     [key: string]: BehaviorSubject<number>;
   } = {
@@ -15,7 +15,7 @@ export class ScoresService {
   };
 
   constructor() {
-    // Initialwerte aus dem lokalen Speicher abrufen, wenn der Service instanziiert wird.
+    // Ruft die Initialwerte aus dem lokalen Speicher auf, wenn der Service instanziiert wird.
     for (let color in this.scores) {
       const storedScore = localStorage.getItem(`score-${color}`);
       if (storedScore) {
@@ -24,24 +24,24 @@ export class ScoresService {
     }
   }
 
-  // Aktualisieren des Scores für eine bestimmte Farbe.
+  // Aktualisiert die Scores für eine bestimmte Farbe.
   addScore(color: string, points: number): void {
     const updatedScore = (this.scores[color].value || 0) + points;
     this.scores[color].next(updatedScore);
     localStorage.setItem(`score-${color}`, updatedScore.toString());
   }
 
-  // Punkte von dem Score für eine bestimmte Farbe abziehen.
+  // Zieht die Punkte von dem Score für eine bestimmte Farbe ab.
   removeScore(color: string, points: number): void {
     let updatedScore = (this.scores[color].value || 0) - points;
-    // Score must be positivve
+    // Score muss eine posizitve Zahl sein
     if (updatedScore < 0) updatedScore = 0;
 
     this.scores[color].next(updatedScore);
     localStorage.setItem(`score-${color}`, updatedScore.toString());
   }
 
-  // Gibt das Observable des Scores für eine bestimmte Farbe zurück
+  // Gibt das Observable des Scores für eine bestimmte Farbe zurück.
   watchScore(color: string) {
     return this.scores[color].asObservable();
   }

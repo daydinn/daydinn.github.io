@@ -1,27 +1,27 @@
+//Container für Punkte
 .maintcontainer {
   position: fixed;
 
   left: 50%;
-  transform: translateX(-50%); /* Zentriert das Element horizontal */
+  transform: translateX(-50%);
   width: 100%;
-  z-index: 500; /* Überlagerungsreihenfolge  */
+  z-index: 500;
 }
-
 
 /* Stil für den Container, der das Symbol und den Text enthält */
 .icon-text-container {
-  display: flex; /*Flexbox für die horizontale Ausrichtung */
-  align-items: center; /* Vertikale zentrierung  */
+  display: flex;
+  align-items: center;
 }
 
 /* Allgemeiner Stil für den Text innerhalb des `.icon-text-container` */
 .icon-text-container span {
-  font-size: 18px; 
-  color: #333; 
+  font-size: 18px;
+  color: #333;
 }
 /* Spezifischer Stil für zentrierte Score-Elemente */
 .center-score {
-  display: inline-block; /* Erlaubt das Zentrieren mit der `float: none` Eigenschaft unten */
+  display: inline-block;
   float: none;
 }
 /* Stil für den Conteiner, der Tipps für verschiedene Stimmungen enthält */

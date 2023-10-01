@@ -5,17 +5,13 @@
   <div class="container-sm text-center overflow-hidden">
     <!-- Reihe für die Darstellung der Stimmungen -->
     <div class="row mt-1">
-      <!-- Wiederholte Spalten für jede Stimmung. Der *ngFor-Direktive wird verwendet, um durch das Array "moods" zu iterieren -->
+      <!-- Wiederholte Spalten für jede Stimmung -->
       <div class="col-4" *ngFor="let mood of moods">
         <!-- Ein Klick auf das Stimmungsbild wechselt dessen Auswahlstatus -->
         <div class="mood" (click)="toggleMoodSelection(mood)">
           <!-- Das Stimmungsbild. Der Pfad wird aus dem mood-Objekt geholt. -->
           <!-- Die Klasse "selected-mood" wird hinzugefügt, wenn die Stimmung ausgewählt ist. -->
-          <img
-            [src]="mood.img"
-            class="img-fluid mb-2 mood-image mt-2"
-            [class.selected-mood]="mood.isSelected"
-          />
+          <img [src]="mood.img" class="img-fluid mb-2 mood-image mt-2" [class.selected-mood]="mood.isSelected" />
         </div>
       </div>
     </div>
@@ -26,16 +22,19 @@
       <div class="col-8 mt-3">
         <!-- Zeigt einen zufälligen Vorschlag, wenn die Stimmung "Sad" ist -->
         <div class="tip-container" *ngIf="isMoodSelected('Sad')">
+          <!-- Icon "Idea" von Freepik, lizenziert durch Flaticon, erhältlich auf https://www.flaticon.com/free-icon/idea_7439511 -->
           <img style="float: lef" src="./assets/tip.png" alt="tip icon" />
           <p class="tip-text font-italic">{{ sadSuggestion }}</p>
         </div>
         <!-- Zeigt einen zufälligen Vorschlag, wenn die Stimmung "Tired" ist -->
         <div class="tip-container" *ngIf="isMoodSelected('Tired')">
+          <!-- Icon "Idea" von Freepik, lizenziert durch Flaticon, erhältlich auf https://www.flaticon.com/free-icon/idea_7439511 -->
           <img src="./assets/tip.png" alt="tip icon" />
           <p class="tip-text font-italic">{{ tiredSuggestion }}</p>
         </div>
         <!-- Zeigt einen zufälligen Vorschlag, wenn die Stimmung "Unproductive" ist -->
         <div class="tip-container" *ngIf="isMoodSelected('Unproductive')">
+          <!-- Icon "Idea" von Freepik, lizenziert durch Flaticon, erhältlich auf https://www.flaticon.com/free-icon/idea_7439511 -->
           <img src="./assets/tip.png" alt="tip icon" />
           <p class="tip-text font-italic">{{ unproductiveSuggestion }}</p>
         </div>

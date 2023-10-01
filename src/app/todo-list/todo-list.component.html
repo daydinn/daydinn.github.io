@@ -1,86 +1,46 @@
-<!-- Hauptcontainer für das Todo-Formular und die Todo-Liste -->
+<!-- Hauptcontainer für das To-do-Formular und die Todo-Liste -->
 <div class="container-sm mt-2">
   <div class="row">
     <div class="col-12">
       <div class="form-buttons ml-auto">
-        <!-- Add-Icon: Klick löst das Ein- und Ausblenden des Todo-Formulars aus -->
-
-        <img
-          class="formicon"
-          (click)="showAddTodoForm = !showAddTodoForm"
-          src="assets/add32.png"
-          alt="Add Icon"
-        />
-
-        <!-- Close-Icon -->
+        <!-- Löst das Ein- und Ausblenden des To-do-Formulars aus -->
+        <!-- Icon "Add" von Ilham Fitrotul Hayat, lizenziert durch Flaticon, erhältlich auf https://www.flaticon.com/free-icon/add_4369555 -->
+        <img class="formicon" (click)="showAddTodoForm = !showAddTodoForm" src="assets/add32.png" alt="Add Icon" />
       </div>
     </div>
   </div>
-  <!-- Scroll-Container für die Todos -->
+  <!-- Scroll-Container für die To-dos -->
   <div class="scroll-container text-center">
-    <!-- Zweite Zeile für das Todo-Formular -->
+    <!-- Zweite Zeile für das To-do-Formular -->
     <div class="row mt-2 justify-content-center">
       <div row mt-1></div>
       <div class="col-4">
         <!-- Todo-Formular, das nur angezeigt wird, wenn showAddTodoForm wahr ist -->
-        <form
-          *ngIf="showAddTodoForm"
-          #todoForm="ngForm"
-          (ngSubmit)="saveTodo()"
-        >
-          <!-- Eingabefeld für den Todo-Namen -->
+        <form *ngIf="showAddTodoForm" #todoForm="ngForm" (ngSubmit)="saveTodo()">
+          <!-- Eingabefeld für den To-do-Namen -->
           <div class="form-group">
             <label for="label">Name:</label>
-            <input
-              type="text"
-              id="label"
-              name="label"
-              class="form-control"
-              [(ngModel)]="newTodo.label"
-              required
-            />
+            <input type="text" id="label" name="label" class="form-control" [(ngModel)]="newTodo.label" required />
           </div>
-          <!-- Dropdown-Auswahl für die Todo-Kategorie -->
+          <!-- Dropdown-Auswahl für die To-do-Kategorie -->
           <div class="form-group">
             <label for="color">Category:</label>
-            <select
-              id="color"
-              name="color"
-              class="form-control"
-              [(ngModel)]="newTodo.color"
-              required
-            >
-              <!-- Optionen werden aus der colors-Array generiert -->
+            <select id="color" name="color" class="form-control" [(ngModel)]="newTodo.color" required>
+              <!-- Optionen werden aus dem colors-Array generiert -->
               <option *ngFor="let color of colors" [value]="color">
                 {{ color }}
               </option>
             </select>
           </div>
-          <!-- Eingabefeld für die Todo-Punkte 1-10 -->
+          <!-- Eingabefeld für die To-do-Punkte 1-10 -->
           <div class="form-group">
             <label for="points">Points:</label>
-            <input
-              type="number"
-              id="points"
-              name="points"
-              class="form-control"
-              [(ngModel)]="newTodo.points"
-              required
-              [max]="maxTodoPoints"
-              [min]="minTodoPoints"
-            />
+            <input type="number" id="points" name="points" class="form-control" [(ngModel)]="newTodo.points" required [max]="maxTodoPoints" [min]="minTodoPoints" />
           </div>
-          <!-- Hinzufügen-Button für das Formular -->
-          <button
-            type="submit"
-            class="btn btn-success mt-2"
-            *ngIf="showAddTodoForm"
-          >
-            Add
-          </button>
+          <button type="submit" class="btn btn-success mt-2" *ngIf="showAddTodoForm"> Add </button>
         </form>
       </div>
-      <!-- Todo-Tabelle -->
+      <!-- To-do-Tabelle -->
       <table class="table table-light todo-table">
         <tbody>
           <tr>
@@ -89,29 +49,14 @@
             <th>Points</th>
             <th>Delete</th>
           </tr>
-          <!-- Tabellenzeilen werden für jeden Todo-Eintrag generiert -->
-          <tr
-            class="spaced-row todo-table"
-            *ngFor="let todo of todos; let i = index"
-          >
+          <!-- Tabellenzeilen werden für jeden To-do-Eintrag generiert -->
+          <tr class="spaced-row todo-table" *ngFor="let todo of todos; let i = index">
             <th [style.color]="todo.color" scope="row">{{ i + 1 }}</th>
-            <td
-              class="isCompleted"
-              [style.color]="todo.color"
-              class="{{ todo.isCompleted ? 'done' : '' }}"
-              (click)="done(i)"
-            >
+            <td class="isCompleted" [style.color]="todo.color" class="{{ todo.isCompleted ? 'done' : '' }}" (click)="done(i)">
               {{ todo.label }}
             </td>
             <td [style.color]="todo.color">{{ todo.points }}</td>
-            <!-- Löschen-Icon zum Entfernen des Todos -->
-            <td
-              class="deleteTodo"
-              style="color: red; font-weight: bold"
-              (click)="remove(i)"
-            >
-              X
-            </td>
+            <td class="deleteTodo" style="color: red; font-weight: bold" (click)="remove(i)"> X </td>
           </tr>
         </tbody>
       </table>

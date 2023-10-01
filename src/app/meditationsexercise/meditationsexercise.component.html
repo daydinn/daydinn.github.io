@@ -1,12 +1,9 @@
 <div class="container-sm text-center">
-  <div
-    class="breathing-circle"
-    [ngClass]="{
+  <div class="breathing-circle" [ngClass]="{
       expanding: timerActive && phase === 'inhale',
       holding: timerActive && phase === 'hold',
       contracting: timerActive && phase === 'exhale'
-    }"
-  >
+    }">
     <!-- Ein Kreis, der die Atmung visualisiert und zeigt die aktuelle Phase (inhale, hold oder exhale -->
     <div class="circle-text">
       {{ phase }}
@@ -14,24 +11,10 @@
     <!-- Zeigt den Timerwert nur an, wenn der Timer aktiv ist -->
     <div class="timer" *ngIf="timerActive">{{ timerValue }}</div>
   </div>
-    <!-- Start-Button: Kann nur geklickt werden, wenn der Timer nicht aktiv ist -->
+  <!-- Start-Button: Kann nur geklickt werden, wenn der Timer nicht aktiv ist -->
   <div>
-    <button
-      class="start-button"
-      (click)="toggleTimer()"  
-      [disabled]="timerActive"
-    >
-      Start
-    </button>
-     <!-- Stopp-Button: Kann nur geklickt werden, wenn der Timer aktiv ist -->
-     
-    <button
-  
-      class="stop-button"
-      (click)="toggleTimer()"
-      [disabled]="!timerActive"
-    >
-      Stop
-    </button>
+    <button class="start-button" (click)="toggleTimer()" [disabled]="timerActive"> Start </button>
+    <!-- Stopp-Button: Kann nur geklickt werden, wenn der Timer aktiv ist -->
+    <button class="stop-button" (click)="toggleTimer()" [disabled]="!timerActive"> Stop </button>
   </div>
 </div>

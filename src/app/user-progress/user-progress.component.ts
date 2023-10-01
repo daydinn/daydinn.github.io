@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { ScoresService } from '../scores.service';
-import { NgChartsModule } from 'ng2-charts';
-import { LEVELS } from '../levels.config';
+import { Component } from "@angular/core";
+import { ScoresService } from "../services/scores.service";
+import { NgChartsModule } from "ng2-charts";
+import { LEVELS } from "./levels.config";
 // Typdefinition für verschiedene Farbkategorien
-type ColorCategory = 'green' | 'red' | 'blue' | 'total';
+type ColorCategory = "green" | "red" | "blue" | "total";
 
 @Component({
-  selector: 'app-user-progress',
-  templateUrl: './user-progress.component.html',
-  styleUrls: ['./user-progress.component.scss'],
+  selector: "app-user-progress",
+  templateUrl: "./user-progress.component.html",
+  styleUrls: ["./user-progress.component.scss"],
 })
 export class UserProgressComponent {
   Math = Math; // Ermöglicht den Zugriff auf Math-Funktionen
@@ -18,8 +18,8 @@ export class UserProgressComponent {
   currentPageActivities: number = 1; //aktuelle seite
   itemsPerPage: number = 10; // Anzahl der Einträge pro Seite
 
-  // Importierte LEVELS
   levels = LEVELS;
+
   // Punkte und Fortschrittsvariablen
   totalPoints: number;
   greenPoints: number;
@@ -42,18 +42,18 @@ export class UserProgressComponent {
   };
   // Datenstruktur für das Diagramm
   public lineChartData: { data: number[]; label: string }[] = [
-    { data: [], label: 'Green Points' },
-    { data: [], label: 'Red Points' },
-    { data: [], label: 'Blue Points' },
-    { data: [], label: 'Total Points' },
+    { data: [], label: "Green Points" },
+    { data: [], label: "Red Points" },
+    { data: [], label: "Blue Points" },
+    { data: [], label: "Total Points" },
   ];
   public lineChartLabels: string[] = []; // für das Datum
 
   ngOnInit() {
     // Punkte abrufen und speichern
-    this.greenPoints = this.scoresService.getScore('green');
-    this.redPoints = this.scoresService.getScore('red');
-    this.bluePoints = this.scoresService.getScore('blue');
+    this.greenPoints = this.scoresService.getScore("green");
+    this.redPoints = this.scoresService.getScore("red");
+    this.bluePoints = this.scoresService.getScore("blue");
     this.totalPoints = this.greenPoints + this.redPoints + this.bluePoints;
 
     // Setzen der Fortschrittsbalkenwerte (in Prozent)
@@ -68,9 +68,9 @@ export class UserProgressComponent {
     const formattedDate = `${currentDate
       .getDate()
       .toString()
-      .padStart(2, '0')}.${(currentDate.getMonth() + 1)
+      .padStart(2, "0")}.${(currentDate.getMonth() + 1)
       .toString()
-      .padStart(2, '0')}.${currentDate.getFullYear()}`;
+      .padStart(2, "0")}.${currentDate.getFullYear()}`;
 
     this.lineChartLabels.push(formattedDate); // Aktuelles Datum hinzufügen
     this.lineChartData[0].data.push(this.greenPoints);
@@ -80,33 +80,33 @@ export class UserProgressComponent {
 
     this.lineChartData = [
       {
-        data: [this.greenPoints], // Macht ein Array aus grünen Punkten
-        label: 'Mental Score',
-        backgroundColor: 'rgba(40, 167, 69, 0.5)', // Green with 50% opacity (#28a745)
+        data: [this.greenPoints], // Erstellt ein Array aus grünen Punkten
+        label: "Mental Score",
+        backgroundColor: "rgba(40, 167, 69, 0.5)",
 
-        borderColor: '#17a2b8', // Solid blue
+        borderColor: "#17a2b8",
       } as any, // Bypass TypeScript checking with `as any`
 
       {
-        data: [this.redPoints], // Macht ein Array aus roten Punkten
-        label: 'Physical Score',
-        backgroundColor: 'rgba(220, 53, 69, 0.5)', // Red with 50% opacity (#dc3545)
-        borderColor: '#dc3545', // Solid red
-      } as any, // Bypass TypeScript checking with `as any`
+        data: [this.redPoints], // Erstellt ein Array aus roten Punkten
+        label: "Physical Score",
+        backgroundColor: "rgba(220, 53, 69, 0.5)",
+        borderColor: "#dc3545",
+      } as any,
 
       {
-        data: [this.bluePoints], // Macht ein Array aus blauen Punkten
-        label: 'Productivity Score',
-        backgroundColor: 'rgba(23, 162, 184, 0.5)', // Blue with 50% opacity (#17a2b8)
-        borderColor: '#28a745', // Solid green
-      } as any, // Bypass TypeScript checking with `as any`
+        data: [this.bluePoints], // Erstellt ein Array aus blauen Punkten
+        label: "Productivity Score",
+        backgroundColor: "rgba(23, 162, 184, 0.5)",
+        borderColor: "#28a745",
+      } as any,
 
       {
-        data: [this.totalPoints], // Macht ein Array aus gesamten Punkten
-        label: 'Total Score',
-        backgroundColor: 'rgba(255, 193, 7, 0.5)', // Yellow with 50% opacity (#ffc107)
-        borderColor: '#ffc107', // Solid yellow
-      } as any, // Bypass TypeScript checking with `as any`
+        data: [this.totalPoints], // Erstellt ein Array aus gesamten Punkten
+        label: "Total Score",
+        backgroundColor: "rgba(255, 193, 7, 0.5)",
+        borderColor: "#ffc107", // Solid yellow
+      } as any,
     ];
   }
   // Funktionen zur Berechnung von Levels und Fortschritt
@@ -117,20 +117,18 @@ export class UserProgressComponent {
     );
     return levelIndex;
   }
-  //liefer den Namen anhand von Farbe und Punkte
+  //liefert den Namen anhand von Farbe und Punkte
   getLevelName(color: ColorCategory, points: number): string {
     return this.levels[color][this.getCurrentLevel(points, color)].label;
   }
 
   // berechnet den Level basierend auf den Punkten,
   calculateLevel(points: number): number {
-    return Math.floor(points / this.pointsForNextLevel['total']) + 1;
+    return Math.floor(points / this.pointsForNextLevel["total"]) + 1;
   }
-  /**
-   * Berechnet den Fortschrittswert basierend auf den gegebenen Punkten und der Farbkategorie.
-   * @param points - Die aktuelle Punktzahl des Benutzers.
-   * @param color - Die Farbkategorie.
-   * @returns Der Prozentsatz des Fortschritts zum nächsten Level.
+
+  /*Berechnet den Fortschrittswert basierend auf den gegebenen Punkten und der Farbkategorie und
+    gibt Prozentsatz des Frotschritts zum nächsten Level
    */
   calculateProgressValue(points: number, color: ColorCategory): number {
     const currentLevelIndex = this.getCurrentLevel(points, color);
@@ -141,128 +139,117 @@ export class UserProgressComponent {
     return (progressToNextLevel / this.pointsForNextLevel[color]) * 100;
   }
 
-  // Bereich für Stimmungen (Moods)
-  /** Ein Array, das gespeicherte Stimmungen des Benutzers enthält. */
   savedMoods: { img: string; date: string; notes?: string }[] = [];
-  /* Ein Array, das gehighlightete Aktivitäten des Benutzers enthält. */
   hoveredActivities: {
     img: string;
     date: string;
     label: string;
     notes?: string;
   }[] = [];
-  /* Index der ausgewählten Aktivität, um Notizen zu bearbeiten. */
+  // Indexwerte um Notizen zu bearbeiten
   selectedActivityIndex: number | null = null;
-  /** Index der ausgewählten Stimmung, um Notizen zu bearbeiten. */
+  // Index der ausgewählten Stimmung, um Notizen zu bearbeiten.
   selectedMoodIndex: number | null = null;
-  /**
-   * Lädt gespeicherte Stimmungen aus dem lokalen Speicher.
-   */
+  //Lädt gespeicherte Stimmungen aus dem lokalen Speicher.
   loadSavedMoods() {
-    const retrievedData = localStorage.getItem('savedMoods');
+    const retrievedData = localStorage.getItem("savedMoods");
     if (retrievedData) {
       this.savedMoods = JSON.parse(retrievedData);
     }
   }
-  /**
-   * Wählt eine bestimmte gespeicherte Stimmung aus, um sie zu bearbeiten oder anzuzeigen.
-   * @param savedMood - Das ausgewählte Stimmungsobjekt.
-   */
+
+  //Wählt eine bestimmte gespeicherte Stimmung aus, um sie zu bearbeiten oder anzuzeigen.
+
   selectMood(savedMood: any) {
     this.selectedMoodIndex = this.savedMoods.indexOf(savedMood);
   }
-  /**
-   * Setzt den Index der ausgewählten Stimmung für die Bearbeitung von Notizen.
-   * @param index - Index der Stimmung im Array.
-   */
+
+  //Setzt den Index der ausgewählten Stimmung für die Bearbeitung von Notizen.
+
   editNotes(index: number) {
     this.selectedMoodIndex = index;
   }
-  /**
-   * Speichert die Notizen für die ausgewählte Stimmung und aktualisiert den lokalen Speicher.
-   */
+
+  // Speichert die Notizen für die ausgewählte Stimmung und aktualisiert den lokalen Speicher.
+
   saveNotes() {
     if (this.selectedMoodIndex !== null) {
       // Dadurch werden die Notizen im Array savedMoods gespeichert
-      localStorage.setItem('savedMoods', JSON.stringify(this.savedMoods));
+      localStorage.setItem("savedMoods", JSON.stringify(this.savedMoods));
       this.selectedMoodIndex = null; // so wird de textarea ausgeblendet nach dem speichern
     }
   }
-  /**
-   * Entfernt eine bestimmte Stimmung aus dem Array und aktualisiert den lokalen Speicher.
-   * @param index - Position der Stimmung im Array, die entfernt werden soll.
-   */
+
+  // Entfernt eine bestimmte Stimmung aus dem Array und aktualisiert den lokalen Speicher.
+
   deleteMood(index: number) {
-    console.log('Deleting mood at index:', index);
+    console.log("Deleting mood at index:", index);
     this.savedMoods.splice(index, 1);
-    console.log('SavedMoods after deletion:', this.savedMoods);
-    localStorage.setItem('savedMoods', JSON.stringify(this.savedMoods));
+    console.log("SavedMoods after deletion:", this.savedMoods);
+    localStorage.setItem("savedMoods", JSON.stringify(this.savedMoods));
   }
 
-  /**
-   * Löscht alle gespeicherten Stimmungen und leert den zugehörigen Eintrag im lokalen Speicher.
-   */
+  // Löscht alle gespeicherten Stimmungen und leert den zugehörigen Eintrag im lokalen Speicher.
+
   deleteAllSavedMoods() {
     this.savedMoods = [];
-    localStorage.removeItem('savedMoods');
+    localStorage.removeItem("savedMoods");
   }
 
   // Lädt gespeicherte Aktivitäten aus dem lokalen Speicher.
 
   loadSavedActivities() {
-    const retrievedData = localStorage.getItem('hoveredActivities');
+    const retrievedData = localStorage.getItem("hoveredActivities");
     if (retrievedData) {
       this.hoveredActivities = JSON.parse(retrievedData);
     }
   }
-  /**
-   * Setzt den Index der aktuell ausgewählten Aktivität für die Bearbeitung von Notizen.
-   * @param index - Index der Aktivität im Array.
-   */
+
+  // Setzt den Index der aktuell ausgewählten Aktivität für die Bearbeitung von Notizen.
+
   editActivityNotes(index: number) {
     this.selectedActivityIndex = index;
   }
-  /**
-   * Speichert Notizen für eine ausgewählte Aktivität und aktualisiert den lokalen Speicher.
-   */
+
+  //Speichert Notizen für eine ausgewählte Aktivität und aktualisiert den lokalen Speicher.
+
   saveActivityNotes() {
     localStorage.setItem(
-      'hoveredActivities',
+      "hoveredActivities",
       JSON.stringify(this.hoveredActivities)
     );
     this.selectedActivityIndex = null;
   }
-  /**
-   * Entfernt alle gespeicherten Aktivitäten und leert den zugehörigen Eintrag im lokalen Speicher.
-   */
+
+  //Entfernt alle gespeicherten Aktivitäten und leert den zugehörigen Eintrag im lokalen Speicher.
+
   deleteAllSavedActivities() {
     this.hoveredActivities = [];
-    localStorage.removeItem('hoveredActivities');
+    localStorage.removeItem("hoveredActivities");
   }
-  /**
-   * Löscht eine bestimmte Aktivität basierend auf dem Index und aktualisiert den lokalen Speicher.
-   * @param index - Position der Aktivität im Array, die entfernt werden soll.
-   */
+
+  //Löscht eine bestimmte Aktivität basierend auf dem Index und aktualisiert den lokalen Speicher.
+
   deleteActivity(index: number) {
-    console.log('Deleting activity at index:', index);
+    console.log("Deleting activity at index:", index);
     this.hoveredActivities.splice(index, 1);
-    console.log('HoveredActivities after deletion:', this.hoveredActivities);
+    console.log("HoveredActivities after deletion:", this.hoveredActivities);
     localStorage.setItem(
-      'hoveredActivities',
+      "hoveredActivities",
       JSON.stringify(this.hoveredActivities)
     );
   }
-  /**
-   * Verringert die aktuelle Seitenzahl für die Anzeige von Aktivitäten.
-   */
+
+  //Verringert die aktuelle Seitenzahl für die Anzeige von Aktivitäten.
+
   decrementPageActivities() {
     if (this.currentPageActivities > 1) {
       this.currentPageActivities--;
     }
   }
-  /**
-   * Erhöht die aktuelle Seitenzahl für die Anzeige von Aktivitäten.
-   */
+
+  //Erhöht die aktuelle Seitenzahl für die Anzeige von Aktivitäten.
+
   incrementPageActivities() {
     if (
       this.currentPageActivities <
@@ -271,17 +258,17 @@ export class UserProgressComponent {
       this.currentPageActivities++;
     }
   }
-  /**
-   * Verringert die aktuelle Seitenzahl für die Anzeige von Stimmungen.
-   */
+
+  //Verringert die aktuelle Seitenzahl für die Anzeige von Stimmungen.
+
   decrementPageMoods() {
     if (this.currentPageMoods > 1) {
       this.currentPageMoods--;
     }
   }
-  /**
-   * Erhöht die aktuelle Seitenzahl für die Anzeige von Stimmungen.
-   */
+
+  //Erhöht die aktuelle Seitenzahl für die Anzeige von Stimmungen.
+
   incrementPageMoods() {
     if (
       this.currentPageMoods <

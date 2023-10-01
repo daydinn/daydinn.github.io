@@ -1,31 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html,
 body {
-    font-family: 'Roboto', sans-serif;
-  }
-
-body{
-
- background-color:   #FFF5E1;
-
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  background-color: #fff5e1;
 }
 
+.navbar-container {
+  background-color: #d1bfa3 !important;
+}
 
-
-.navbar-container{
-    background-color:#D1BFA3 !important
-   }
-   
-
-   .todo-table{
-
-    background-color: aqua !important;
-   }
-
-   
+.todo-table {
+  background-color: aqua !important;
+}

@@ -1,4 +1,91 @@
-/* Scroll-Container und Big-Window haben dieselben Styles */
+/* Stilregeln für  versteckte Checkboxes */
+.hidden-checkbox {
+  position: absolute;
+  left: -9999px; /* Checkbox außerhalb des sichtbaren Bereichs verschieben */
+}
+
+.checkbox-label {
+  cursor: pointer;
+  text-align: end;
+
+  .checkbox-custom {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
+  #infoCheckbox:checked + & .checkbox-custom {
+    color: blue;
+  }
+}
+
+.hidden-checkbox {
+  position: absolute;
+  left: -9999px;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  text-align: end;
+
+  .checkbox-custom {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
+  #infoCheckbox:checked + & .checkbox-custom {
+    color: blue;
+  }
+}
+
+.infoCheckboxIcon {
+  filter: opacity(0.5) drop-shadow(0 0 0 green);
+}
+.infoCheckbox-clicked {
+  filter: opacity(1) drop-shadow(0 0 0 green);
+}
+
+/* Stil für das Info-Checkbox-Icon */
+.infoCheckboxIcon {
+  filter: opacity(0.3) drop-shadow(0 0 0 yellow);
+}
+.infoCheckboxIcon:hover {
+  transform: scale(1.1);
+  filter: opacity(0.8) drop-shadow(0 0 0 yellow);
+}
+.infoCheckbox-clicked {
+  filter: opacity(1) drop-shadow(0 0 0 yellow);
+}
+
+/* Stil für Add Checkbox-Icon */
+.addCheckboxIcon {
+  filter: opacity(0.3) drop-shadow(0 0 0 green);
+}
+.addCheckboxIcon:hover {
+  transform: scale(1.1);
+  filter: opacity(0.7) drop-shadow(0 0 0 green);
+}
+
+.addCheckbox-clicked {
+  filter: opacity(1) drop-shadow(0 0 0 green);
+  border: 5x solid black;
+  border-radius: 50px;
+}
+
+//icons style
+.deleteCheckboxIcon {
+  filter: opacity(0.3) drop-shadow(0 0 0 red);
+}
+.deleteCheckboxIcon:hover {
+  transform: scale(1.1);
+  filter: opacity(0.7) drop-shadow(0 0 0 red);
+}
+.deleteCheckbox-clicked {
+  filter: opacity(1) drop-shadow(0 0 0 red);
+}
+
+/* Scroll-Container mit Aktivitätenliste */
 .scroll-container {
   max-height: 270px;
   overflow-y: scroll;
@@ -17,7 +104,7 @@
 
 /* Effekt für die ausgewählte Aktivität  */
 .activity-image:active {
-  animation: vibrate 0.2s ease 0.3; 
+  animation: vibrate 0.2s ease 0.3;
 }
 
 /* Allgemeine Stilregeln für diverse Klassen mit Bildern und SVGs */
@@ -34,11 +121,11 @@
 }
 /* Stil für das gehoverte Element */
 .hovered {
-  border-color: gold !important; 
+  border-color: gold !important;
   border-width: 4px !important;
 }
 
-/* Weitere Stilregeln für Big-Window */
+/* Info-Popup für ausgewählte Aktivitäte */
 .big-window {
   padding: 20px;
   margin: 0 auto;
@@ -72,112 +159,12 @@
   margin-right: -7px;
 }
 
-/* Stilregeln für eine versteckte Checkbox */
-.hidden-checkbox {
-  position: absolute;
-  left: -9999px; /* Checkbox außerhalb des sichtbaren Bereichs verschieben */
-}
-
-.checkbox-label {
-  cursor: pointer;
-  text-align: end;
-
-  .checkbox-custom {
-    
-    width: 24px; 
-    height: 24px; 
-  }
-
-  /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
-  #infoCheckbox:checked + & .checkbox-custom {
-   
-    color: blue; 
-  }
-}
-
-/* Stil für das Info-Checkbox-Icon */
-.infoCheckboxIcon {
-  filter: opacity(0.3) drop-shadow(0 0 0 yellow);
-}
-.infoCheckboxIcon:hover {
-  transform: scale(1.1);
-  filter: opacity(0.8) drop-shadow(0 0 0 yellow);
-}
-.infoCheckbox-clicked {
-  filter: opacity(1) drop-shadow(0 0 0 yellow);
-}
-
-.deleteCheckboxIcon {
-  filter: opacity(0.3) drop-shadow(0 0 0 red);
-}
-.deleteCheckboxIcon:hover {
-  transform: scale(1.1);
-  filter: opacity(0.7) drop-shadow(0 0 0 red);
-}
-.deleteCheckbox-clicked {
-  filter: opacity(1) drop-shadow(0 0 0 red);
-}
-
-.addCheckboxIcon {
-  filter: opacity(0.3) drop-shadow(0 0 0 green);
-}
-.addCheckboxIcon:hover {
-  transform: scale(1.1);
-  filter: opacity(0.7) drop-shadow(0 0 0 green);
-}
-
-.addCheckbox-clicked {
-  filter: opacity(1) drop-shadow(0 0 0 green);
-  border: 5x solid black;
-  border-radius: 50px;
-}
-
 .unhover-icon {
   cursor: pointer;
-  
 }
 
 .unhover-icon:hover {
   filter: opacity(0.7) drop-shadow(0 0 0 red);
-}
-
-.neue-klasse:hover {
-  filter: hue-rotate(180deg);
-  transform-origin: center;
-  transform: scale(1.1);
-}
-
-@keyframes vibrate {
-  0% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-2px, -2px);
-  }
-  20% {
-    transform: translate(2px, -2px);
-  }
-  30% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(2px, 2px);
-  }
-  50% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, -2px);
-  }
-  70% {
-    transform: translate(-2px, 2px);
-  }
-  80% {
-    transform: translate(2px, 2px);
-  }
-  90% {
-    transform: translate(-2px, -2px);
-  }
 }
 
 .create-activity-btn {
@@ -236,7 +223,7 @@
 }
 
 .activity-image:active {
-  animation: vibrate 0.2s ease 0.3; 
+  animation: vibrate 0.2s ease 0.3;
 }
 
 /* Gemeinsame Regeln für .icon-container, .activity-card img:not(.noborder), .activity-card svg:not(.icon), .big-window img:not(.noborder), .big-window svg:not(.icon) */
@@ -253,115 +240,8 @@
 }
 
 .hovered {
-  border-color: gold !important; 
+  border-color: gold !important;
   border-width: 4px !important;
-}
-
-/* CSS für .big-window */
-.big-window {
-  padding: 20px;
-  margin: 0 auto;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  white-space: normal;
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.big-window {
-  position: fixed;
-  top: 55%; 
-  left: 50%;
-  width: 70%;
-  transform: translateX(-50%); /* Zentriert das Element horizontal */
-  z-index: 1000; 
- 
-}
-
-/* CSS für Bilder innerhalb der Karte */
-.big-window img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* CSS für den Schließen-Button */
-.close-button {
-  padding: 10px 15px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.close-bigwindow-icon {
-  cursor: pointer;
-  text-align: end;
-  margin-top: -11px;
-  margin-right: -7px;
-}
-
-
-.hidden-checkbox {
-  position: absolute;
-  left: -9999px; 
-}
-
-.checkbox-label {
-  cursor: pointer;
-  text-align: end;
-
-  .checkbox-custom {
-   
-    width: 24px; 
-    height: 24px; 
-  }
-
-  /* Stil für das benutzerdefinierte Icon, wenn die Checkbox aktiviert ist */
-  #infoCheckbox:checked + & .checkbox-custom {
-    
-    color: blue; 
-  }
-}
-
-.infoCheckboxIcon {
-  filter: opacity(0.5) drop-shadow(0 0 0 green);
-}
-.infoCheckbox-clicked {
-  filter: opacity(1) drop-shadow(0 0 0 green);
-}
-
-@keyframes vibrate {
-  0% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-2px, -2px);
-  }
-  20% {
-    transform: translate(2px, -2px);
-  }
-  30% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(2px, 2px);
-  }
-  50% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, -2px);
-  }
-  70% {
-    transform: translate(-2px, 2px);
-  }
-  80% {
-    transform: translate(2px, 2px);
-  }
-  90% {
-    transform: translate(-2px, -2px);
-  }
 }
 
 .create-activity-btn {
@@ -399,6 +279,79 @@
     cursor: pointer;
   }
 }
-activity-content-background {
-  background-color: green !important;
+
+/* Content für Ausgewählte Aktivitäten */
+.big-window {
+  padding: 20px;
+  margin: 0 auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.big-window {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  width: 70%;
+  transform: translateX(-50%); /* Zentriert das Element horizontal */
+  z-index: 1000;
+}
+
+/* CSS für Bilder innerhalb der Karte */
+.big-window img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CSS für den Schließen-Button */
+.close-button {
+  padding: 10px 15px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-bigwindow-icon {
+  cursor: pointer;
+  text-align: end;
+  margin-top: -11px;
+  margin-right: -7px;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  90% {
+    transform: translate(-2px, -2px);
+  }
 }

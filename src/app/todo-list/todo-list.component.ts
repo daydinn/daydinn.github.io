@@ -1,58 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todo';
-import { ScoresService } from '../scores.service';
-import { TODOS } from '../todos.config';
+import { Component, OnInit } from "@angular/core";
+import { Todo } from "../models/todo";
+import { ScoresService } from "../services/scores.service";
+import { TODOS } from "./todos.config";
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss'],
+  selector: "app-todo-list",
+  templateUrl: "./todo-list.component.html",
+  styleUrls: ["./todo-list.component.scss"],
 })
 export class TodoListComponent implements OnInit {
-  // Implementiert das OnInit-Interface für den Lebenszyklus-Hook
+  // Implementiert das OnInit-Interface für den Lebenszyklus-Hook.
 
-  showAddTodoForm = false; // Steuert die Anzeige des Todo-Formulars
-  colors: string[] = ['green', 'red', 'blue']; // Farboptionen
-  maxTodoPoints = 10; // Maximale Punkte für Todos
-  minTodoPoints = 0; // Minimale Punkte für Todos
+  showAddTodoForm = false; // Steuert die Anzeige des To-do-Formulars.
+  colors: string[] = ["green", "red", "blue"]; // Farboptionen
+  maxTodoPoints = 10; // Maximale Punkte für To-dos
+  minTodoPoints = 0; // Minimale Punkte für To-dos
 
-  currentPageTodos: number = 1; // Aktuelle Seite für die Paginierung von Todos
-  itemsPerPageTodos: number = 5; // Todos pro Seite
+  currentPageTodos: number = 1; // Aktuelle  Seite für die Paginierung der To-dos
+  itemsPerPageTodos: number = 5; // To-dos pro Seite
 
-  // Konstruktor, um ScoresService zu injizieren und ggf. Todos aus dem localStorage zu laden
-  constructor(private scoresService: ScoresService) {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      this.todos = JSON.parse(savedTodos);
-    }
-  }
+  // Inhiziert das ScoresService und ladet ggf.  die To-dos aus dem lokalen Speicher.
+  constructor(private scoresService: ScoresService) {}
 
   ngOnInit() {
-    // Beim Starten der App: Versuchen, Todos aus dem localStorage zu laden
-    const savedTodos = localStorage.getItem('todos'); // Retrieve the todos from localStorage
+    const savedTodos = localStorage.getItem("todos"); // Ruft die To-dos aus dem lokalen Spichert ab.
     if (savedTodos) {
-      this.todos = JSON.parse(savedTodos); // Parse the stringified todos back into an array
+      this.todos = JSON.parse(savedTodos); // Fügt die To-dos zurück in das Array hinzu.
     } else {
-      // Standard-Todos, falls nichts im localStorage vorhanden ist
+      // Standard-Todos,
       this.todos = [
         {
           id: 1,
-          label: 'Take a walk',
-          color: 'green',
+          label: "Take a walk",
+          color: "green",
           isCompleted: false,
           points: 1,
         },
         {
           id: 2,
-          label: 'Go to the gym',
-          color: 'blue',
+          label: "Go to the gym",
+          color: "blue",
           isCompleted: false,
           points: 5,
         },
         {
           id: 3,
-          label: 'Check your Emails',
-          color: 'red',
+          label: "Check your Emails",
+          color: "red",
           isCompleted: false,
           points: 10,
         },
@@ -60,62 +54,62 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  // Hilfsfunktion zum Speichern der aktuellen Todos im localStorage
+  // Speichert die aktuellen To-dos im localStorage.
   saveToLocalStorage() {
-    localStorage.setItem('todos', JSON.stringify(this.todos)); // Convert todos array into a string and save
+    localStorage.setItem("todos", JSON.stringify(this.todos)); // Convert todos array into a string and save
   }
 
-  // Methode zum Anzeigen des Formulars
+  // Zeigt das Formular an.
   showAddForm() {
     this.showAddTodoForm = true;
   }
 
-  // Methode zum Ausblenden des Formulars
+  // Blendet das Formular aus.
   hideAddForm() {
     this.showAddTodoForm = false;
   }
 
-  // Erste Todos (werden später im ngOnInit aus dem localStorage geladen)
+  // Erste To-dos
   todos: Todo[] = TODOS;
-  // Struktur eines neuen, leeren Todos
+  // Die Struktur eines neuen, leeren To-dos
   newTodo: Todo = {
     id: 0,
-    label: '',
-    color: 'blue', // Standardfarbe
+    label: "",
+    color: "blue", // Standardfarbe
     isCompleted: false,
     points: 0,
   };
 
-  // Methode zum Speichern eines neuen Todos
+  // Speichert ein neues To-do.
   saveTodo() {
     if (this.newTodo.label) {
       this.todos.push(this.newTodo);
       this.newTodo = {
-        label: '',
+        label: "",
         id: 0,
-        color: 'blue',
+        color: "blue",
         isCompleted: false,
         points: 0,
       };
-      this.saveToLocalStorage(); // Save the updated todos list to localStorage
+      this.saveToLocalStorage(); // Speichert die aktaullisierten To-dos im lokalen Speicher.
     } else {
-      alert('Please Enter the Fields');
+      alert("Please Enter the Fields");
     }
   }
-  // Methode zum Markieren eines Todos als erledigt/nicht erledigt
+  // Markiert eine Aufgabe als "erledigt" oder nicht "erledigt".
   done(id: number) {
-    // Umschalten des isCompleted-Status und Aktualisieren des Punktestands
+    // Schaltet den isCompleted-Status und aktuallisiert den Punktestands.
     this.todos[id].isCompleted = !this.todos[id].isCompleted;
     if (this.todos[id].isCompleted) {
-      //Wenn das Todo als erledigt markiert ist.
-      this.scoresService.addScore(this.todos[id].color, this.todos[id].points);  //Punkte auf der Basis der Farbe hinzufügen.
+      //Wenn eine Tod-to als erledigt markiert ist, werden die Punte entsprechend der Farbe hinzugefügt.
+      this.scoresService.addScore(this.todos[id].color, this.todos[id].points);
     }
     this.saveToLocalStorage();
   }
 
-  // Methode zum Entfernen eines Todos
+  // Entfernt das To-do
   remove(id: number) {
     this.todos = this.todos.filter((v, i) => i !== id);
-    this.saveToLocalStorage(); 
+    this.saveToLocalStorage();
   }
 }

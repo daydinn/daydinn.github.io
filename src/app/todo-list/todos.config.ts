@@ -1,4 +1,5 @@
-import { Todo } from './todo';
+import { Todo } from '../models/todo';
+//Platzhalter Todos
 
 export const TODOS: Todo[] = [
   {
@@ -13,13 +14,13 @@ export const TODOS: Todo[] = [
     label: 'Go to the gym',
     color: 'red',
     isCompleted: false,
-    points: 5,
+    points: 3,
   },
   {
     id: 3,
     label: 'Check your Emails',
     color: 'blue',
     isCompleted: false,
-    points: 10,
+    points: 5,
   },
 ];

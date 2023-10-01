@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Pipe({
   name: 'safeUrl',
 })
+//Diese klasse wird für das Youtube-Video im Home-Komponenten benutzt.
 export class SafeUrlPipe implements PipeTransform {
   // Constructor der Klasse, der eine Instanz von DomSanitizer injiziert.
   // DomSanitizer wird verwendet, um URLs als sicher zu markieren und zu verhindern,

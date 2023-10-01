@@ -159,10 +159,11 @@
               </td>
               <td>
                 <!-- Zeigt einen Button zum Löschen der Stimmung an -->
+                <!-- Icon "Bin" von kliwir art, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/bin_9790368 -->
                 <img
                   class="deleteIcon"
                   src="./assets/delete32.png"
-                  alt="Delete"
+                  alt="Delete icon"
                   (click)="deleteMood(i); $event.stopPropagation()"
                   style="cursor: pointer"
                 />
@@ -171,25 +172,27 @@
           </tbody>
         </table>
         <!-- Button zur Navigation zur vorherigen Seite der Tabelle -->
+        <!-- Icon "Previous" von Chanut, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/previous_151846 -->
         <img
           clas="Paginierung-icons"
           src="./assets/previous24.png"
-          alt="Vorherige Seite"
+          alt="Icon for previous page "
           (click)="decrementPageMoods()"
           style="cursor: pointer"
         />
         <!-- Anzeige der aktuellen Seite -->
         <span class="fw-bolder"> {{ currentPageMoods }} </span
         ><!-- Button zur Navigation zur nächsten Seite der Tabelle -->
+        <!-- Icon "Next" von Chanut, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/next_151858 -->
         <img
           src="./assets/next24.png"
-          alt="Nächste Seite"
+          alt="Icon for next page"
           (click)="incrementPageMoods()"
           style="cursor: pointer"
         />
       </div>
 
-      <button class="btn btn-danger mt-5" (click)="deleteAllSavedActivities()">
+      <button class="btn btn-danger mt-5" (click)="deleteAllSavedMoods()">
         Delete all
       </button>
     </div>
@@ -197,7 +200,7 @@
   <!-- Beginn des Activity-Tracking Abschnitts -->
   <div class="row justify-content-center mt-5">
     <div class="col-lg-10 col-md-12 text-center">
-      <h2 class="mt-5">Activity Tracking</h2>
+      <h1 class="mt-5">Activity Tracking</h1>
       <div class="table-responsive mt-3">
         <table class="table table-hover table-bordered mt-3">
           <thead class="thead-dark">
@@ -245,10 +248,11 @@
                 ></textarea>
               </td>
               <td>
+                <!-- Icon "Bin" von kliwir art, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/bin_9790368 -->
                 <img
                   class="deleteIcon"
                   src="./assets/delete32.png"
-                  alt="Delete"
+                  alt="Delete icon"
                   (click)="deleteActivity(i); $event.stopPropagation()"
                   style="cursor: pointer"
                 />
@@ -256,9 +260,10 @@
             </tr>
           </tbody>
         </table>
+        <!-- Icon "Previous" von Chanut, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/previous_151846 -->
         <img
           src="./assets/previous24.png"
-          alt="Vorherige Seite"
+          alt="Icon for previous page"
           (click)="decrementPageActivities()"
           style="cursor: pointer"
         />
@@ -266,9 +271,10 @@
         <span class="fw-bolder"> {{ currentPageActivities }} </span>
 
         <!-- Für das "Nächste Seite" Icon -->
-        <img
+        <!-- Icon "Next" von Chanut, lizenziert durch Flaticon, Lizenznehmer: user92498310, erhältlich auf https://www.flaticon.com/free-icon/next_151858 -->
+       <img
           src="./assets/next24.png"
-          alt="Nächste Seite"
+          alt="Icon for next page"
           (click)="incrementPageActivities()"
           style="cursor: pointer"
         />
